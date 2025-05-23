@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+html, body {
+  overflow-x: hidden;
+}
+
+@theme {
+    --color-BM-background: #161616;
+    --color-BM-sidebar: #242424;
+    --color-BM-bars-swap: #4A625F;
+    --color-BM-bars-step: #624A4A;
+    --color-BM-subtext: #bbbbbb;
+    --color-BM-active: #3A3A3A;
+    --color-BM-border: #7E7E7E;
+    --text-color-BM-text: #ffffff;
+    --text-color-BM-subtext: #bbbbbb;
+    --font-display: "Poppins";
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-Medium.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-Semibold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
