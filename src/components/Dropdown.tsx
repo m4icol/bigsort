@@ -2,10 +2,11 @@ import { useState } from "react";
 
 type DropdownProps = {
     options: string[];
+    dropdownPositionClass?: string;
     onSelected?: (option: string)=> void;
 }
 
-export default function Dropdown({options, onSelected}: DropdownProps) {
+export default function Dropdown({options, dropdownPositionClass ,onSelected}: DropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -41,7 +42,7 @@ export default function Dropdown({options, onSelected}: DropdownProps) {
             </button>
 
             {isOpen && (
-                <div className="w-full absolute z-10 mt-2 rounded-lg shadow-sm cursor-pointer bg-BM-sidebar text-BM-subtext border-1">
+                <div className={`w-full absolute z-10 rounded-lg shadow-sm cursor-pointer bg-BM-sidebar text-BM-subtext border-1 ${dropdownPositionClass || 'mt-2'}`}>
                     <ul className="py-2 text-sm">
                         {options.map((option, index) => (
                         <li key={index}>

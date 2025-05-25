@@ -3,7 +3,7 @@ type IconJavaProps = {
     className?: string;
 };
 
-export default function IconJava({ size = 15, className = "" }: IconJavaProps) {
+export default function IconJava({ size = 18, className = "" }: IconJavaProps) {
     return (
         <svg
             width={size}

@@ -3,7 +3,7 @@ type IconJSProps = {
     className?: string;
 };
 
-export default function IconJS({ size = 14, className = "" }: IconJSProps) {
+export default function IconJS({ size = 18, className = "" }: IconJSProps) {
     return (
         <svg
             width={size}
