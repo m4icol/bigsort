@@ -1,17 +1,19 @@
-type IconRandomProps = {
-    size?: number;
-    className?: string;
-  };
-  
-  export default function IconRandom({ size = 18, className = "" }: IconRandomProps) {
-    return (
+type ButtonRandomProps = {
+  onClick?: () => void;
+};
+
+export default function ButtonRandom({ onClick }: ButtonRandomProps) {
+  return (
+    <button
+      onClick={onClick}
+      className="px-3 py-2 flex cursor-pointer justify-center text-BM-subtext items-center rounded-lg bg-BM-sidebar border-1 border-BM-border hover:text-BM-text"
+    >
       <svg
-        width={size}
-        height={(size * 12) / 14} 
+        width={18}
+        height={(18 * 12) / 14}
         viewBox="0 0 14 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={className}
       >
         <path
           fillRule="evenodd"
@@ -20,6 +22,6 @@ type IconRandomProps = {
           fill="currentColor"
         />
       </svg>
-    );
-  }
-  
+    </button>
+  );
+}

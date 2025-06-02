@@ -1,9 +1,10 @@
+import ButtonRandom from "../components/ButtonRandom";
 import IconBack from "../components/icons/controls/IconBack";
 import IconNext from "../components/icons/controls/IconNext";
 import IconRetry from "../components/icons/controls/IconRetry";
 import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
-import PanelItem from "../components/PanelItem";
+import PanelItem, { StatItem } from "../components/Item";
 
 function BigSort() {
     return (
@@ -15,7 +16,7 @@ function BigSort() {
             </div>
 
             <div className="flex flex-col gap-10 justify-center items-center">
-                <div className="flex flex-row gap-2 justify-center items-baseline overflow-x-auto w-full">
+                <div className="flex flex-row gap-2 h-81 items-end overflow-x-auto w-full">
                     <LayoutBar level={1}></LayoutBar>
                     <LayoutBar level={2}></LayoutBar>
                     <LayoutBar level={3}></LayoutBar>
@@ -28,13 +29,25 @@ function BigSort() {
                     <LayoutBar level={9}></LayoutBar>
                     <LayoutBar level={10}></LayoutBar>
 
-                    <LayoutBar level={20}></LayoutBar>
+                    <LayoutBar level={7}></LayoutBar>
+                    <LayoutBar level={8}></LayoutBar>
+                    <LayoutBar level={9}></LayoutBar>
+                    <LayoutBar level={1}></LayoutBar>
+                    <LayoutBar level={1}></LayoutBar>
+
+                    <LayoutBar level={7}></LayoutBar>
+                    <LayoutBar level={8}></LayoutBar>
+                    <LayoutBar level={9}></LayoutBar>
+                    <LayoutBar level={1}></LayoutBar>
+                    <LayoutBar level={1}></LayoutBar>
+                    
                 </div>
                 <div className="flex flex-row gap-3">
                     <PanelItem className="cursor-pointer"><IconBack /></PanelItem>
                     <PanelItem className="cursor-pointer"><IconRun /></PanelItem>
                     <PanelItem className="cursor-pointer"><IconRetry /></PanelItem>
                     <PanelItem className="cursor-pointer"><IconNext /></PanelItem>
+                    <ButtonRandom />
 
                     <PanelItem className="cursor-not-allowed">
                         <span className="text-BM-text text-sm font-semibold">SORTING LIST</span>
@@ -46,26 +59,11 @@ function BigSort() {
             <div className="flex flex-col gap-5">
                 <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
                 <div className="flex flex-row gap-3">
-                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
-                    <pre className="text-BM-text text-md">O(n)</pre>
-                    <span className="text-BM-subtext font-semibold text-xs mb-1">BEST CASE</span>
-                </PanelItem>
-                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
-                    <pre className="text-BM-text text-md">O(n²)</pre>
-                    <span className="text-BM-subtext font-semibold text-xs mb-1">WORST CASE</span>
-                </PanelItem>
-                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
-                    <pre className="text-BM-text text-md">2.20s</pre>
-                    <span className="text-BM-subtext font-semibold text-xs mb-1">TIMER</span>
-                </PanelItem>
-                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
-                    <pre className="text-BM-text text-md">12</pre>
-                    <span className="text-BM-subtext font-semibold text-xs mb-1">STEPS</span>
-                </PanelItem>
-                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
-                    <pre className="text-BM-text text-md">8</pre>
-                    <span className="text-BM-subtext font-semibold text-xs mb-1">SWAPS</span>
-                </PanelItem>
+                   <StatItem value="O(n)" label="BEST CASE" />
+                   <StatItem value="O(n²)" label="WORST CASE" />
+                   <StatItem value="22.20s" label="TIMER" />
+                   <StatItem value="12" label="STEPS" />
+                   <StatItem value="8" label="SWAPS" />
                 </div>
             </div>
         </div>
