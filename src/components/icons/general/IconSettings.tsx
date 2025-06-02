@@ -3,7 +3,7 @@ type IconSettingsProps = {
     className?: string;
   };
   
-  export default function IconSettings({ size = 20, className = "" }: IconSettingsProps) {
+  export default function IconSettings({ size = 21, className = "shrink-0" }: IconSettingsProps) {
     return (
       <svg
         width={size}

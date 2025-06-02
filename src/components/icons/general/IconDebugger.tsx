@@ -3,7 +3,7 @@ type IconDebuggerProps = {
     className?: string;
   };
   
-  export default function IconDebugger({ size = 28, className = "" }: IconDebuggerProps) {
+  export default function IconDebugger({ size = 26, className = "shrink-0" }: IconDebuggerProps) {
     return (
       <svg
         width={size}

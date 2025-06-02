@@ -37,3 +37,8 @@ html, body {
   font-weight: 700;
   font-style: normal;
 }
+
+/* Para navegadores basados en Webkit (Chrome, Edge, Safari) */
+.scroll-bar-custom::-webkit-scrollbar {
+  width: 0px; /* Ancho de la barra */
+}

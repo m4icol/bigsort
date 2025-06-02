@@ -8,7 +8,7 @@ type RangeProps = {
       <input
         type="range"
         min={5}
-        max={15}
+        max={20}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full accent-BM-border h-1"
