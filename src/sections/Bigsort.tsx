@@ -2,9 +2,6 @@ import IconBack from "../components/icons/controls/IconBack";
 import IconNext from "../components/icons/controls/IconNext";
 import IconRetry from "../components/icons/controls/IconRetry";
 import IconRun from "../components/icons/controls/IconRun";
-import IconStep from "../components/icons/stats/IconStep";
-import IconSwap from "../components/icons/stats/IconSwap";
-import IconTimer from "../components/icons/stats/IconTimer";
 import LayoutBar from "../components/LayoutBar";
 import PanelItem from "../components/PanelItem";
 
@@ -49,22 +46,25 @@ function BigSort() {
             <div className="flex flex-col gap-5">
                 <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
                 <div className="flex flex-row gap-3">
-                <PanelItem className="flex flex-col gap-1 items-start py-4">
-                    <span className="text-BM-subtext text-sm font-semibold mb-1">BIG O (BUMBLE SORT)</span>
-                    <p className="font-normal text-sm"><span className="text-BM-text text-xs font-semibold">WORST CASE</span>: when the array is completely unsorted.</p>
-                    <p className="font-normal text-sm"><span className="text-BM-text text-xs font-semibold">BEST CASE</span>: when the array is already sorted.</p>
+                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
+                    <pre className="text-BM-text text-md">O(n)</pre>
+                    <span className="text-BM-subtext font-semibold text-xs mb-1">BEST CASE</span>
                 </PanelItem>
-                <PanelItem className="flex flex-col text-sm gap-3">
-                    <IconTimer></IconTimer>
-                    <p>2.20s</p>
+                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
+                    <pre className="text-BM-text text-md">O(n²)</pre>
+                    <span className="text-BM-subtext font-semibold text-xs mb-1">WORST CASE</span>
                 </PanelItem>
-                <PanelItem className="flex flex-col text-sm gap-3">
-                    <IconSwap></IconSwap>
-                    <p>4</p>
+                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
+                    <pre className="text-BM-text text-md">2.20s</pre>
+                    <span className="text-BM-subtext font-semibold text-xs mb-1">TIMER</span>
                 </PanelItem>
-                <PanelItem className="flex flex-col text-sm gap-3">
-                    <IconStep></IconStep>
-                    <p>9</p>
+                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
+                    <pre className="text-BM-text text-md">12</pre>
+                    <span className="text-BM-subtext font-semibold text-xs mb-1">STEPS</span>
+                </PanelItem>
+                <PanelItem className="flex flex-col gap-1 pt-3 pb-2">
+                    <pre className="text-BM-text text-md">8</pre>
+                    <span className="text-BM-subtext font-semibold text-xs mb-1">SWAPS</span>
                 </PanelItem>
                 </div>
             </div>
