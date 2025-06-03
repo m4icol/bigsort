@@ -29,7 +29,7 @@ function BigSort({ randomNumberItems }: BigSortProps) {
     }
     
     return (
-        <div className="flex flex-col items-center gap-15 py-20 flex-auto overflow-y-scroll scroll-bar-custom">
+        <div className="flex flex-col items-center gap-13 py-20 flex-auto overflow-y-scroll scroll-bar-custom">
 
             <div className="flex gap-2 flex-col justify-center items-center w-[24rem]">
                 <h1 className="text-3xl font-bold">BIG S(O)RT</h1>
@@ -37,10 +37,11 @@ function BigSort({ randomNumberItems }: BigSortProps) {
             </div>
 
             <div className="flex flex-col gap-10 justify-center items-center">
-                <div className="flex flex-row gap-2 h-85 justify-center items-end overflow-x-auto w-full">
-                    {currentList.map((element)=>
-                        <LayoutBar level={element}></LayoutBar>
-                    )}
+                <div className="flex flex-row gap-2 h-90 justify-center items-end overflow-x-auto w-full">
+                {currentList.map((element, i) => (
+                    <LayoutBar key={i} level={element} index={i+1} />
+                ))}
+
 
                 </div>
                 <div className="flex flex-col justify-center items-center gap-4">
