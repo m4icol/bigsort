@@ -19,7 +19,7 @@ html, body {
 
 @font-face {
   font-family: "Poppins";
-  src: url("/src/assets/fonts/Poppins-regular.woff") format("woff");
+  src: url("/src/assets/fonts/Poppins-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -33,9 +33,13 @@ html, body {
 
 @font-face {
   font-family: "Poppins";
-  src: url("/src/assets/fonts/Poppins-Semibold.woff") format("woff");
+  src: url("/src/assets/fonts/Poppins-SemiBold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
+}
+
+html {
+  font-family: 'Poppins', system-ui, sans-serif;
 }
 
 /* Para navegadores basados en Webkit (Chrome, Edge, Safari) */
