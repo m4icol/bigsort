@@ -6,7 +6,7 @@ type LayoutBarProps = {
 function LayoutBar({ background = "bg-BM-sidebar", level = 1 }: LayoutBarProps) {
     const calculateHeight = (level: number): number => {
         const heightLevel = Math.max(0, Math.min(15, level));
-        return Math.round((heightLevel) * (300 / 14));
+        return Math.round((heightLevel) * (310 / 14));
     };
 
     const height = calculateHeight(level);

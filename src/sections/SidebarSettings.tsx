@@ -1,4 +1,3 @@
-import { useState } from "react";
 import IconSettings from "../components/icons/general/IconSettings";
 import Dropdown from "../components/Dropdown";
 import Sidebar from "../components/Sidebar";
@@ -9,15 +8,18 @@ import MoonIcon from "../components/icons/general/IconMoon";
 import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
 
-function SidebarSettings() {
+type SidebarSettingsProps = {
+    rangeValue: number;
+    setRangeValue: (value: number) => void;
+    randomNumberItems: () => void;
+  };
+
+  function SidebarSettings({
+    rangeValue,
+    setRangeValue,
+    randomNumberItems,
+  }: SidebarSettingsProps) {
     
-    const [rangeValue, setRangeValue] = useState(12);
-
-    const generateRandomValue = () => {
-      const randomValue = Math.floor(Math.random() * 16) + 5;
-      setRangeValue(randomValue);
-    };
-
     return (
     <Sidebar title="SETTINGS" icon={IconSettings} sizeSidebar="w-72" position="left-8">
         <div className="flex flex-col gap-6">
@@ -27,11 +29,11 @@ function SidebarSettings() {
             </SidebarSection>
 
             <div className="flex flex-col gap-2">
-                    <p className="font-semibold text-sm">NUMBERS <span className="text-xs text-BM-subtext">{rangeValue}</span></p>
-                    <div className="flex items-center gap-2">
-                        <ButtonRandom onClick={generateRandomValue} />
-                        <Range value={rangeValue} onChange={setRangeValue} />
-                    </div>
+                <p className="font-semibold text-sm">NUMBERS <span className="text-xs text-BM-subtext">{rangeValue}</span></p>
+                <div className="flex items-center gap-2">
+                    <ButtonRandom onClick={randomNumberItems} />
+                    <Range value={rangeValue} onChange={setRangeValue} />
+                </div>
             </div>
 
             <SidebarSection title="SPEED">

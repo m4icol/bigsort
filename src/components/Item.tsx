@@ -8,7 +8,7 @@ export function PanelItem({ children, onClick, className = "" }: PanelItemProps)
   return (
     <div
       onClick={onClick}
-      className={`px-5 py-1.5 flex justify-center text-BM-subtext items-center rounded-lg bg-BM-sidebar border-1 border-BM-border ${className}`}
+      className={`px-4 py-1.5 flex justify-center text-BM-subtext items-center rounded-lg bg-BM-sidebar border-1 border-BM-border ${className}`}
     >
       {children}
     </div>
