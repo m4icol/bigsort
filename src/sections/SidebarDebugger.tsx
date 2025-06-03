@@ -35,9 +35,9 @@ function SidebarCode() {
                 <a
                     href="https://github.com/m4icol/bigsort"
                     target="_blank"
-                    className="flex flex-row px-5 py-3 rounded-lg border-1 custom-bg border-BM-border justify-between"
+                    className="flex flex-row px-5 py-2.5 rounded-lg border-1 items-center custom-bg text-BM-subtext hover:text-BM-text hover:border-BM-subtext justify-between"
                 >
-                    <p className="font-semibold text-BM-subtext text-sm">VIEW REPOSITORY</p>
+                    <p className="text-xs">VIEW REPOSITORY</p>
                     <IconGithub />
                 </a>
             </div>

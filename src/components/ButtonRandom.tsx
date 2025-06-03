@@ -6,7 +6,7 @@ export default function ButtonRandom({ onClick }: ButtonRandomProps) {
   return (
     <button
       onClick={onClick}
-      className="px-3 py-2 flex cursor-pointer justify-center text-BM-subtext items-center rounded-lg bg-BM-sidebar border-1 border-BM-border hover:text-BM-text"
+      className="px-3 py-2.5 flex cursor-pointer justify-center text-BM-subtext items-center rounded-lg bg-BM-sidebar border-1 border-BM-border hover:text-BM-text hover:border-BM-subtext"
     >
       <svg
         width={18}

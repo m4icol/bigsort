@@ -29,9 +29,9 @@ function BigSort({ randomNumberItems }: BigSortProps) {
     }
     
     return (
-        <div className="flex flex-col items-center gap-18 py-23 flex-auto overflow-y-scroll scroll-bar-custom">
+        <div className="flex flex-col items-center gap-15 py-20 flex-auto overflow-y-scroll scroll-bar-custom">
 
-            <div className="flex gap-3 flex-col justify-center items-center w-[24rem]">
+            <div className="flex gap-2 flex-col justify-center items-center w-[24rem]">
                 <h1 className="text-3xl font-bold">BIG S(O)RT</h1>
                 <p className="text-xs text-BM-subtext text-center">Interactive tool to explore how sorting algorithms work, with live visuals, controls, speed and code in multiple languages.</p>
             </div>
@@ -43,13 +43,14 @@ function BigSort({ randomNumberItems }: BigSortProps) {
                     )}
 
                 </div>
-                <div className="flex flex-row gap-3">
-                    <PanelItem className="cursor-pointer"><IconBack /></PanelItem>
-                    <PanelItem className="cursor-pointer"><IconRun /></PanelItem>
-                    <PanelItem className="cursor-pointer"><IconRetry /></PanelItem>
-                    <PanelItem className="cursor-pointer"><IconNext /></PanelItem>
-
+                <div className="flex flex-col justify-center items-center gap-4">
                     <SortingList handleCreateList={handleCreateList} currentList={currentList} />
+                    <div className="flex flex-row gap-3 h-9 w-90 justify-center">
+                        <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"><IconBack /></PanelItem>
+                        <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"><IconRun /></PanelItem>
+                        <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"><IconRetry /></PanelItem>
+                        <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"><IconNext /></PanelItem>
+                    </div>
                 </div>
             </div>
 

@@ -16,7 +16,7 @@ export default function Sidebar({ title, icon: Icon, children, sizeSidebar = "w-
    }
 
    return (
-       <aside className={`fixed ${position} top-8 bottom-8 rounded-2xl z-10 px-7 py-6 bg-BM-sidebar transition-all duration-300 
+       <aside className={`fixed ${position} top-8 bottom-8 rounded-2xl z-10 px-6 pt-6 pb-4 bg-BM-sidebar transition-all duration-300 
        ${isOpen ? `${sizeSidebar} overflow-y-scroll scroll-bar-custom` : "w-22"}`}>
            <div className={`flex items-center mb-2 cursor-pointer transition-all duration-300 ${isOpen ? "justify-start gap-3" : "justify-center"}`}
                onClick={toggleSidebar}
