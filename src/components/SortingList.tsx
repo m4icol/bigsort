@@ -1,26 +1,12 @@
-import { useState } from "react";
 import PanelItem from "./Item";
 import ButtonRandom from "./ButtonRandom";
 
 type SortingListProps = {
-    items: number
+    handleCreateList: () => void;
+    currentList: number[]
 }
 
-export default function SortingList({items = 0}: SortingListProps){
-    const [currentList, setCurrentList] = useState<number[]>([5, 2, 7, 11, 9, 8, 13, 15, 7, 1, 13, 4]);
-    const createList = (items: number) => {
-        const newList = []
-        for(let i = 0; i < items; i++){
-            const randomValue = Math.floor(Math.random() * 15) + 1;
-            newList.push(randomValue);
-        }
-        return newList;
-    }
-
-    const handleCreateList = () => {
-        const newList = createList(items);
-        setCurrentList(newList)
-    }
+export default function SortingList({handleCreateList ,currentList}: SortingListProps){
 
     return(
         <div className="flex flex-row gap-3">

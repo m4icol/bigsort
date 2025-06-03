@@ -5,12 +5,29 @@ import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
+import { useState } from "react";
 
 type BigSortProps = {
     randomNumberItems: number;
 };
 
 function BigSort({ randomNumberItems }: BigSortProps) {
+
+    const [currentList, setCurrentList] = useState<number[]>([5, 2, 7, 11, 9, 8, 13, 15, 7, 1, 13, 4]);
+    const createList = (items: number) => {
+        const newList = []
+        for(let i = 0; i < items; i++){
+            const randomValue = Math.floor(Math.random() * 15) + 1;
+            newList.push(randomValue);
+        }
+        return newList;
+    }
+
+    const handleCreateList = () => {
+        const newList = createList(randomNumberItems);
+        setCurrentList(newList)
+    }
+    
     return (
         <div className="flex flex-col items-center gap-18 py-23 flex-auto overflow-y-scroll scroll-bar-custom">
 
@@ -21,21 +38,10 @@ function BigSort({ randomNumberItems }: BigSortProps) {
 
             <div className="flex flex-col gap-10 justify-center items-center">
                 <div className="flex flex-row gap-2 h-85 justify-center items-end overflow-x-auto w-full">
-                    <LayoutBar level={5}></LayoutBar>
-                    <LayoutBar level={2}></LayoutBar>
-                    <LayoutBar level={7}></LayoutBar>
-                    <LayoutBar level={11}></LayoutBar>
-                    <LayoutBar level={9}></LayoutBar>
+                    {currentList.map((element)=>
+                        <LayoutBar level={element}></LayoutBar>
+                    )}
 
-                    <LayoutBar level={8}></LayoutBar>
-                    <LayoutBar level={13}></LayoutBar>
-                    <LayoutBar level={15}></LayoutBar>
-                    <LayoutBar level={7}></LayoutBar>
-                    <LayoutBar level={1}></LayoutBar>
-
-                    
-                    <LayoutBar level={13}></LayoutBar>
-                    <LayoutBar level={4}></LayoutBar>
                 </div>
                 <div className="flex flex-row gap-3">
                     <PanelItem className="cursor-pointer"><IconBack /></PanelItem>
@@ -43,7 +49,7 @@ function BigSort({ randomNumberItems }: BigSortProps) {
                     <PanelItem className="cursor-pointer"><IconRetry /></PanelItem>
                     <PanelItem className="cursor-pointer"><IconNext /></PanelItem>
 
-                    <SortingList items={randomNumberItems} />
+                    <SortingList handleCreateList={handleCreateList} currentList={currentList} />
                 </div>
             </div>
 
