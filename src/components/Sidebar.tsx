@@ -17,7 +17,7 @@ export default function Sidebar({
   position,
   rounded = "rounded-2xl",
 }: SidebarProps) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(() => window.innerWidth >= 1024);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
