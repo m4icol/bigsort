@@ -46,8 +46,9 @@ function BigSort({ randomNumberItems }: BigSortProps) {
           ))}
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-4 px-5">
           <SortingList handleCreateList={handleCreateList} currentList={currentList} />
+
           <div className="flex flex-row gap-3 h-9 w-90 justify-center">
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconBack />

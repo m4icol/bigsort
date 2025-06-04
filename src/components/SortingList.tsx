@@ -12,7 +12,7 @@ export default function SortingList({handleCreateList ,currentList}: SortingList
         <div className="flex flex-row gap-3">
             <ButtonRandom onClick={handleCreateList} />
 
-            <PanelItem className="cursor-not-allowed flex flex-row gap-2 text-base">
+            <PanelItem className="cursor-not-allowed flex flex-row gap-2 text-xs lg:text-base">
                 {currentList.join(", ")}
             </PanelItem>
         </div>
