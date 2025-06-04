@@ -11,9 +11,14 @@ import IconPython from "../components/icons/languajes/IconPython";
 
 function SidebarCode() {
     return (
-        <Sidebar title="DEBUGGER" icon={IconDebugger} sizeSidebar="w-72" position="right-8">
+        <Sidebar
+            title="DEBUGGER"
+            icon={IconDebugger}
+            sizeSidebar="w-screen lg:w-72"
+            position="right-0 lg:right-5"
+            rounded="rounded-bl-2xl lg:rounded-2xl"
+        >   
             <div className="flex flex-col gap-6">
-
                 <SidebarSection title="VISUAL MODE">
                     <SwitchOption options={[<IconJS />, <IconJava />, <IconPython />]} />
                 </SidebarSection>

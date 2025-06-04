@@ -37,7 +37,7 @@ function BigSort({ randomNumberItems }: BigSortProps) {
             </div>
 
             <div className="flex flex-col gap-10 justify-center items-center">
-                <div className="flex flex-row gap-2 h-90 justify-center items-end overflow-x-auto w-full">
+                <div className="flex flex-row gap-2 h-90 justify-center items-end overflow-x-auto w-full overflow-y-hidden">
                 {currentList.map((element, i) => (
                     <LayoutBar key={i} level={element} index={i+1} />
                 ))}

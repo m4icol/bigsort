@@ -21,7 +21,13 @@ type SidebarSettingsProps = {
   }: SidebarSettingsProps) {
     
     return (
-    <Sidebar title="SETTINGS" icon={IconSettings} sizeSidebar="w-72" position="left-8">
+    <Sidebar
+        title="SETTINGS"
+        icon={IconSettings}
+        sizeSidebar="w-screen lg:w-72 z-20"
+        position="left-0 lg:left-5"
+        rounded="rounded-br-2xl lg:rounded-2xl"
+    >
         <div className="flex flex-col gap-6">
 
             <SidebarSection title="ALGORITHMS">
