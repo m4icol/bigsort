@@ -33,14 +33,14 @@ function BigSort({ randomNumberItems }: BigSortProps) {
       
       <div className="flex gap-10 lg:gap-2 flex-col justify-center items-center w-full lg:w-[24rem]">
         <h1 className="text-2xl lg:text-3xl font-bold">BIG S(O)RT</h1>
-        <p className="text-xs text-BM-subtext text-center px-6">
+        <p className="text-xs text-BM-subtext text-center px-8 lg:px-0">
           Interactive tool to explore how sorting algorithms work, with live visuals, controls, speed and code in multiple languages.
         </p>
       </div>
 
       <div className="flex flex-col gap-10">
         
-        <div className="flex flex-row gap-2 h-90 justify-start pl-10 lg:justify-center items-end lg:overflow-x-auto w-full overflow-y-hidden">
+        <div className="flex flex-row gap-2.5 h-90 px-10 justify-center items-end lg:overflow-x-auto w-full overflow-y-hidden">
           {currentList.map((element, i) => (
             <LayoutBar key={i} level={element} index={i + 1} />
           ))}
