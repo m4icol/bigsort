@@ -15,7 +15,7 @@ function LayoutBar({ background = "bg-BM-sidebar", level = 1, index }: LayoutBar
     return (
         <div className="flex flex-col gap-2">
             <div 
-            className={`rounded-md w-10 border-1 border-BM-border flex-shrink-0 ${background}`}
+            className={`rounded-md w-9 lg:w-10 border-1 border-BM-border flex-shrink-0 ${background}`}
             style={{ height: `${height}px` }}
             >
             </div>
