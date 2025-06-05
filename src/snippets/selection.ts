@@ -7,7 +7,6 @@ const selectionSharedSteps = [
   
   const selectionSharedComplexity = {
     best: 'O(n²)',
-    average: 'O(n²)',
     worst: 'O(n²)'
   };
   

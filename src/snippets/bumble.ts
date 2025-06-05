@@ -3,7 +3,6 @@ const sharedSteps = [
   ];
   const sharedComplexity = {
     best: 'O(n)',
-    average: 'O(n²)',
     worst: 'O(n²)'
   };
   

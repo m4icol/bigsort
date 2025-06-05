@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IconBack from "../components/icons/controls/IconBack";
 import IconNext from "../components/icons/controls/IconNext";
 import IconRetry from "../components/icons/controls/IconRetry";
@@ -6,13 +6,14 @@ import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
+import { snippets } from "../snippets";
 
 type BigSortProps = {
   randomNumberItems: number;
 };
 
 function BigSort({ randomNumberItems }: BigSortProps) {
-  const [currentList, setCurrentList] = useState<number[]>([5, 2, 7, 11, 9, 8, 13, 15, 7, 1, 13, 4]);
+  const [currentList, setCurrentList] = useState<number[]>([]);
 
   const createList = (items: number) => {
     const newList = [];
@@ -22,6 +23,11 @@ function BigSort({ randomNumberItems }: BigSortProps) {
     }
     return newList;
   };
+
+  useEffect(() => {
+    const newList = createList(randomNumberItems);
+    setCurrentList(newList);
+  }, [randomNumberItems]);
 
   const handleCreateList = () => {
     const newList = createList(randomNumberItems);
@@ -40,7 +46,7 @@ function BigSort({ randomNumberItems }: BigSortProps) {
 
       <div className="flex flex-col gap-10">
         
-        <div className="flex flex-row gap-2.5 h-90 px-10 justify-center items-end lg:overflow-x-auto w-full overflow-y-hidden">
+        <div className="flex flex-row gap-2.5 h-90 px-10 justify-center items-end overflow-x-hidden w-full overflow-y-hidden">
           {currentList.map((element, i) => (
             <LayoutBar key={i} level={element} index={i + 1} />
           ))}
@@ -69,8 +75,8 @@ function BigSort({ randomNumberItems }: BigSortProps) {
       <div className="flex flex-col gap-5 w-full justify-center items-center">
         <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
-          <StatItem value="O(n)" label="BEST CASE" />
-          <StatItem value="O(n²)" label="WORST CASE" />
+          <StatItem value={`${snippets["bumble"]["java"]["complexity"]["best"]}`} label="BEST CASE" />
+          <StatItem value={`${snippets["bumble"]["java"]["complexity"]["worst"]}`} label="WORST CASE" />
           <StatItem value="22.20s" label="TIMER" />
           <StatItem value="12" label="STEPS" />
           <StatItem value="8" label="SWAPS" />

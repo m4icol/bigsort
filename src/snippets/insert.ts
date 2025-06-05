@@ -8,7 +8,6 @@ const insertionSharedSteps = [
   
   const insertionSharedComplexity = {
     best: 'O(n)',
-    average: 'O(n²)',
     worst: 'O(n²)'
   };
   

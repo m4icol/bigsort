@@ -15,11 +15,11 @@ function LayoutBar({ background = "bg-BM-sidebar", level = 1, index }: LayoutBar
     return (
         <div className="flex flex-col gap-2 items-center w-full lg:w-10">
             <div 
-            className={`rounded-md w-full border-1 border-BM-border flex-shrink-0 ${background}`}
+            className={`rounded-md border-1 w-full border-BM-border flex-shrink-0 ${background}`}
             style={{ height: `${height}px` }}
             >
             </div>
-            <p className="text-BM-subtext text-xs text-center">{index}</p>
+            <p className="text-BM-subtext text-xs text-center w-full">{index}</p>
         </div>
     );
 }

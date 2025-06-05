@@ -7,7 +7,6 @@ const quickSharedSteps = [
   
   const quickSharedComplexity = {
     best: 'O(n log n)',
-    average: 'O(n log n)',
     worst: 'O(n²)'
   };
   

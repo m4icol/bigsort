@@ -24,7 +24,7 @@ type StatItemProps = {
 export function StatItem({ value, label, className = "" }: StatItemProps) {
   return (
     <PanelItem className={`flex flex-col gap-1 pt-3 pb-2  ${className} `}>
-    <pre className="text-BM-text text-md">{value}</pre>
+      <pre className="text-BM-text text-md">{value}</pre>
       <span className="text-BM-subtext font-semibold text-xs mb-1">{label}</span>
     </PanelItem>
   );
