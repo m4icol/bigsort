@@ -1,6 +1,5 @@
 import CodeField from "../components/CodeField";
 import Sidebar from "../components/Sidebar";
-import SwitchOption from "../components/SwitchOption";
 import SidebarSection from "../components/SidebarSection";
 
 import IconDebugger from "../components/icons/general/IconDebugger";
@@ -8,8 +7,16 @@ import IconGithub from "../components/icons/general/IconGithub";
 import IconJS from "../components/icons/languajes/IconJS";
 import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
+import SwitchOptionCode from "../components/SwitchOptionCode";
 
-function SidebarCode() {
+import type { LanguageKey } from "../types";
+
+type SidebarCodeProps = {
+  codeLanguage: LanguageKey,
+  setCodeLanguage: (value: LanguageKey) => void;
+}
+
+function SidebarCode({ codeLanguage, setCodeLanguage }: SidebarCodeProps) {
     return (
         <Sidebar
             title="DEBUGGER"
@@ -20,11 +27,17 @@ function SidebarCode() {
         >   
             <div className="flex flex-col gap-6">
                 <SidebarSection title="VISUAL MODE">
-                    <SwitchOption options={[<IconJS />, <IconJava />, <IconPython />]} />
+                    <SwitchOptionCode
+                        codeLanguage={codeLanguage}
+                        setCodeLanguage={setCodeLanguage}
+                        options={[<IconJS />, <IconJava />, <IconPython />]}
+                        values={['javascript', 'java', 'python']}
+                    />
+    
                 </SidebarSection>
 
                 <SidebarSection title="CODE">
-                    <CodeField />
+                    <CodeField algorithm="bumble" codeLanguage={codeLanguage} />
                 </SidebarSection>
 
                 <SidebarSection title="STEP BY STEP">

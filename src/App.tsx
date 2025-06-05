@@ -2,6 +2,7 @@ import { useState } from "react";
 import BigSort from "./sections/Bigsort";
 import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
+import type { LanguageKey } from "./types";
 function App() {
   const [rangeValue, setRangeValue] = useState(12);
 
@@ -10,6 +11,8 @@ function App() {
     setRangeValue(randomValue);
   };
 
+  const [codeLanguage, setCodeLanguage] = useState<LanguageKey>("javascript");
+
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
       <SidebarSettings         
@@ -17,7 +20,7 @@ function App() {
         setRangeValue={setRangeValue}
         randomNumberItems={generateRandomValue} />
       <BigSort randomNumberItems={rangeValue} />
-      <SidebarCode />
+      <SidebarCode codeLanguage={codeLanguage} setCodeLanguage={setCodeLanguage}/>
     </div>
   )
 }
