@@ -2,7 +2,7 @@ import { useState } from "react";
 import BigSort from "./sections/Bigsort";
 import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
-import type { LanguageKey } from "./types";
+import type { AlgorithmKey, LanguageKey } from "./types";
 function App() {
   const [rangeValue, setRangeValue] = useState(12);
 
@@ -11,6 +11,7 @@ function App() {
     setRangeValue(randomValue);
   };
 
+  const [codeAlgorithm,setCodeAlgorithm] = useState<AlgorithmKey>("bumble");
   const [codeLanguage, setCodeLanguage] = useState<LanguageKey>("javascript");
 
   return (
@@ -18,9 +19,14 @@ function App() {
       <SidebarSettings         
         rangeValue={rangeValue}
         setRangeValue={setRangeValue}
-        randomNumberItems={generateRandomValue} />
+        randomNumberItems={generateRandomValue} 
+
+        codeAlgorithm={codeAlgorithm}
+        setCodeAlgorithm={setCodeAlgorithm}
+        />
+
       <BigSort randomNumberItems={rangeValue} />
-      <SidebarCode codeLanguage={codeLanguage} setCodeLanguage={setCodeLanguage}/>
+      <SidebarCode codeLanguage={codeLanguage} setCodeLanguage={setCodeLanguage} codeAlgorithm={codeAlgorithm}/>
     </div>
   )
 }

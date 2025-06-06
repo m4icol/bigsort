@@ -9,14 +9,16 @@ import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
 import SwitchOptionCode from "../components/SwitchOptionCode";
 
-import type { LanguageKey } from "../types";
+import type { AlgorithmKey, LanguageKey } from "../types";
 
 type SidebarCodeProps = {
   codeLanguage: LanguageKey,
   setCodeLanguage: (value: LanguageKey) => void;
+
+  codeAlgorithm: AlgorithmKey;
 }
 
-function SidebarCode({ codeLanguage, setCodeLanguage }: SidebarCodeProps) {
+function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm}: SidebarCodeProps) {
     return (
         <Sidebar
             title="DEBUGGER"
@@ -37,14 +39,12 @@ function SidebarCode({ codeLanguage, setCodeLanguage }: SidebarCodeProps) {
                 </SidebarSection>
 
                 <SidebarSection title="CODE">
-                    <CodeField algorithm="bumble" codeLanguage={codeLanguage} />
+                    <CodeField algorithm={codeAlgorithm} codeLanguage={codeLanguage} />
                 </SidebarSection>
 
                 <SidebarSection title="STEP BY STEP">
                     <div className="bg-BM-sidebar px-3 py-2 text-BM-text text-sm rounded-lg border-1 border-BM-border">
                         <pre className="overflow-x-scroll scroll-bar-code py-0">
-                            
-                            
                         </pre>
                     </div>
                 </SidebarSection>

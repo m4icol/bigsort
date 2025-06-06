@@ -75,8 +75,8 @@ function BigSort({ randomNumberItems }: BigSortProps) {
       <div className="flex flex-col gap-5 w-full justify-center items-center">
         <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
-          <StatItem value={`${snippets["bumble"]["java"]["complexity"]["best"]}`} label="BEST CASE" />
-          <StatItem value={`${snippets["bumble"]["java"]["complexity"]["worst"]}`} label="WORST CASE" />
+          <StatItem value={snippets["bumble"]["javascript"]?.complexity.best} label="BEST CASE" />
+          <StatItem value={snippets["bumble"]["javascript"]?.complexity.worst} label="WORST CASE" />
           <StatItem value="22.20s" label="TIMER" />
           <StatItem value="12" label="STEPS" />
           <StatItem value="8" label="SWAPS" />

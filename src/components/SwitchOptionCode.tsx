@@ -3,6 +3,7 @@ import type { LanguageKey } from "../types";
 type SwitchOptionProps = {
   codeLanguage: LanguageKey;
   setCodeLanguage: (value: LanguageKey) => void;
+  
   options: React.ReactNode[];
   values: LanguageKey[];
   onSelected?: (value: LanguageKey) => void;
@@ -15,6 +16,7 @@ export default function SwitchOptionCode({
   values,
   onSelected,
 }: SwitchOptionProps) {
+  
   const handleSelected = (value: LanguageKey) => {
     setCodeLanguage(value);
     onSelected?.(value);

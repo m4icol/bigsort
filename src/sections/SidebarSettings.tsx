@@ -7,17 +7,25 @@ import SunIcon from "../components/icons/general/IconSun";
 import MoonIcon from "../components/icons/general/IconMoon";
 import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
+import type { AlgorithmKey } from "../types";
+import DropdownCode from "../components/DropdownCode";
 
 type SidebarSettingsProps = {
     rangeValue: number;
     setRangeValue: (value: number) => void;
     randomNumberItems: () => void;
+
+    codeAlgorithm: AlgorithmKey;
+    setCodeAlgorithm: (value: AlgorithmKey) => void;
   };
 
   function SidebarSettings({
     rangeValue,
     setRangeValue,
     randomNumberItems,
+
+    codeAlgorithm,
+    setCodeAlgorithm,
   }: SidebarSettingsProps) {
     
     return (
@@ -31,7 +39,12 @@ type SidebarSettingsProps = {
         <div className="flex flex-col gap-6">
 
             <SidebarSection title="ALGORITHMS">
-                <Dropdown dropdownPositionClass="mt-2 top-full" options={["BUMBLE SORT", "INSERT SORT", "SELECTED SORT", "QUICK SORT"]} />
+                <DropdownCode 
+                codeAlgorithm={codeAlgorithm}
+                setCodeAlgorithm={setCodeAlgorithm}
+                dropdownPositionClass="mt-2 top-full" 
+                options={["BUMBLE", "INSERT", "SELECTED", "QUICK"]} 
+                values={['bumble', 'insertion', 'selection', 'quick']} />
             </SidebarSection>
 
             <div className="flex flex-col gap-2">
