@@ -15,7 +15,7 @@ export default function SwitchOption<T>({
   onSelected,
 }: SwitchOptionProps<T>) {
   const handleSelected = (value: T) => {
-    setSelectedValue(value);
+    setSelectedValue(value); 
     onSelected?.(value);
   };
 

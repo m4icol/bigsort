@@ -8,7 +8,6 @@ import MoonIcon from "../components/icons/general/IconMoon";
 import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
 import type { AlgorithmKey } from "../types";
-import DropdownCode from "../components/DropdownCode";
 import { useState } from "react";
 
 type SidebarSettingsProps = {
@@ -39,6 +38,7 @@ type SidebarSettingsProps = {
     DARK_MODE: <MoonIcon />
     };
 
+    const [selectedLanguage, setSelectedLanguage] = useState("ENGLISH");
     
     return (
     <Sidebar
@@ -51,11 +51,12 @@ type SidebarSettingsProps = {
         <div className="flex flex-col gap-6">
 
             <SidebarSection title="ALGORITHMS">
-                <DropdownCode 
-                codeAlgorithm={codeAlgorithm}
-                setCodeAlgorithm={setCodeAlgorithm}
-                dropdownPositionClass="mt-2 top-full"
-                values={['BUMBLE', 'INSERTION', 'SELECTION', 'QUICK']} />
+                <Dropdown<AlgorithmKey>
+                    dropdownPositionClass="mt-2 top-full"
+                    values={['BUMBLE', 'INSERTION', 'SELECTION', 'QUICK']}
+                    selectedValue={codeAlgorithm}
+                    setSelectedValue={setCodeAlgorithm}
+                />
             </SidebarSection>
 
             <div className="flex flex-col gap-2">
@@ -68,28 +69,28 @@ type SidebarSettingsProps = {
 
             <SidebarSection title="SPEED">
                 <SwitchOption<string>
-                selectedValue={tempSpeed}
-                setSelectedValue={setTempSpeed}
-                options={["0.5x", "1.0x", "1.5x", "2.0x"]}
-                values={["0.5x", "1.0x", "1.5x", "2.0x"]}
+                    selectedValue={tempSpeed}
+                    setSelectedValue={setTempSpeed}
+                    options={["0.5x", "1.0x", "1.5x", "2.0x"]}
+                    values={["0.5x", "1.0x", "1.5x", "2.0x"]}
                 />
             </SidebarSection>
 
             <SidebarSection title="ORDER">
                 <SwitchOption<string>
-                selectedValue={tempOrder}
-                setSelectedValue={setTempOrder}
-                options={["ASCENDING", "DESCENDING"]}
-                values={["ASCENDING", "DESCENDING"]}
+                    selectedValue={tempOrder}
+                    setSelectedValue={setTempOrder}
+                    options={["ASCENDING", "DESCENDING"]}
+                    values={["ASCENDING", "DESCENDING"]}
                 />
             </SidebarSection>
 
             <SidebarSection title="LAYOUT">
                 <SwitchOption<string>
-                selectedValue={tempLayout}
-                setSelectedValue={setTempLayout}
-                options={["BARRS", "CELLS"]}
-                values={["BARRS", "CELLS"]}
+                    selectedValue={tempLayout}
+                    setSelectedValue={setTempLayout}
+                    options={["BARRS", "CELLS"]}
+                    values={["BARRS", "CELLS"]}
                 />
             </SidebarSection>
 
@@ -107,7 +108,12 @@ type SidebarSettingsProps = {
             </SidebarSection>
 
             <SidebarSection title="LANGUAGE">
-                <Dropdown dropdownPositionClass="mb-2 bottom-full" options={["ENGLISH", "SPANISH"]} />
+                <Dropdown<string>
+                    dropdownPositionClass="mb-2 bottom-full"
+                    values={["ENGLISH", "SPANISH"]}
+                    selectedValue={selectedLanguage}
+                    setSelectedValue={setSelectedLanguage}
+                />
             </SidebarSection>
 
         </div>
