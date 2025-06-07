@@ -44,7 +44,7 @@ type SidebarSettingsProps = {
     <Sidebar
         title="SETTINGS"
         icon={IconSettings}
-        sizeSidebar="w-screen lg:w-72 z-20"
+        sizeSidebar="w-screen lg:w-80 z-20"
         position="left-0 lg:left-5"
         rounded="rounded-br-2xl lg:rounded-2xl"
     >

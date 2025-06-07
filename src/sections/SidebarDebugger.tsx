@@ -9,7 +9,7 @@ import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
 
 import type { AlgorithmKey, LanguageKey } from "../types";
-import { snippets } from "../snippets";
+import { snippets } from "../snippets/debugger";
 import SwitchOption from "../components/SwitchOption";
 
 type SidebarCodeProps = {

@@ -1,4 +1,4 @@
-import { snippets } from "../snippets";
+import { snippets } from "../snippets/debugger";
 import type { LanguageKey } from "../types";
 
 type AlgorithmKey = keyof typeof snippets;

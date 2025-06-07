@@ -6,7 +6,7 @@ import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
-import { snippets } from "../snippets";
+import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey } from "../types";
 
 type BigSortProps = {
