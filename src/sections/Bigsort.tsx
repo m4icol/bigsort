@@ -8,6 +8,8 @@ import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey } from "../types";
+import { getBubbleSortSteps } from "../snippets/animation/bumbleSteps";
+import { playSteps } from "../snippets/animation/playSteps";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -40,6 +42,11 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
   const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
   const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
 
+  const handleRun = () => {
+    const steps = getBubbleSortSteps(currentList);
+    playSteps(steps, currentList, setCurrentList);
+  };
+  
   return (
     <div className="flex flex-col lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
       
@@ -67,6 +74,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
             </PanelItem>
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconRun />
+              <button onClick={handleRun}>Run</button>
             </PanelItem>
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconRetry />
