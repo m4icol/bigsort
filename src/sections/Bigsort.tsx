@@ -10,6 +10,10 @@ import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bumbleSteps";
 import { playSteps } from "../snippets/animation/playSteps";
+import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
+import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
+import { getQuickSortSteps } from "../snippets/animation/quickSteps";
+import type { SortStep } from "../snippets/animation/sortSteps";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -43,7 +47,17 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
   const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
 
   const handleRun = () => {
-    const steps = getBubbleSortSteps(currentList);
+    let steps: SortStep[] = [];
+  
+    if (codeAlgorithm === "BUMBLE") {
+      steps = getBubbleSortSteps(currentList);
+    } else if (codeAlgorithm === "INSERTION") {
+      steps = getInsertionSortSteps(currentList);
+    } else if (codeAlgorithm === "SELECTION") {
+      steps = getSelectionSortSteps(currentList);
+    } else if (codeAlgorithm === "QUICK") {
+      steps = getQuickSortSteps(currentList);
+    }
     playSteps(steps, currentList, setCurrentList);
   };
   
@@ -72,9 +86,8 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconBack />
             </PanelItem>
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
+            <PanelItem onClick={handleRun} className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconRun />
-              <button onClick={handleRun}>Run</button>
             </PanelItem>
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconRetry />
