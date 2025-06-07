@@ -27,6 +27,7 @@ export default function SwitchOption<T>({
 
         return (
           <button
+            aria-label="Switch option"
             key={index}
             onClick={() => handleSelected(value)}
             className={`py-1.5 rounded-md w-full flex justify-center items-center transition-colors ${

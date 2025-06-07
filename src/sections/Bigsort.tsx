@@ -79,7 +79,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
       </div>
 
       <div className="flex flex-col gap-5 w-full justify-center items-center">
-        <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
+        <p className="font-semibold text-center">COMPLEXITY AND STATS</p>
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
           <StatItem value={bestCase} label="BEST CASE" />
           <StatItem value={worstCase} label="WORST CASE" />
