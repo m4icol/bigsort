@@ -1,4 +1,4 @@
-import type { SortStep } from "./sortSteps";
+import type { SortStep } from "../../types";
 
 export function getBubbleSortSteps(array: number[]): SortStep[] {
   const steps: SortStep[] = [];
