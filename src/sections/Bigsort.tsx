@@ -7,13 +7,12 @@ import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
-import type { AlgorithmKey, LanguageKey, SpeedKey } from "../types";
+import type { AlgorithmKey, LanguageKey, SortStep, SpeedKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bumbleSteps";
 import { playSteps } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
 import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
 import { getQuickSortSteps } from "../snippets/animation/quickSteps";
-import type { SortStep } from "../snippets/animation/sortSteps";
 
 type BigSortProps = {
   randomNumberItems: number;
