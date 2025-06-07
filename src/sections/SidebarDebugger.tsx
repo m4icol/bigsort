@@ -10,6 +10,7 @@ import IconPython from "../components/icons/languajes/IconPython";
 import SwitchOptionCode from "../components/SwitchOptionCode";
 
 import type { AlgorithmKey, LanguageKey } from "../types";
+import { snippets } from "../snippets";
 
 type SidebarCodeProps = {
   codeLanguage: LanguageKey,
@@ -44,10 +45,16 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm}: SidebarCod
 
                 <SidebarSection title="STEP BY STEP">
                     <div className="bg-BM-sidebar px-3 py-2 text-BM-text text-sm rounded-lg border-1 border-BM-border">
-                        <pre className="overflow-x-scroll scroll-bar-code py-0">
-                        </pre>
+                        <ul className="list-decimal list-inside space-y-1 text-xs">
+                            {snippets[codeAlgorithm][codeLanguage]?.steps?.map((stepObj, index) => (
+                                <li key={index}>{stepObj.action}</li>
+                            )) ?? (
+                                <p className="text-BM-subtext">No steps available.</p>
+                            )}
+                        </ul>
                     </div>
                 </SidebarSection>
+
             </div>
 
             <SidebarSection title="GITHUB">

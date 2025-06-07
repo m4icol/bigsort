@@ -37,6 +37,9 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
     setCurrentList(newList);
   };
 
+  const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
+  const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
+
   return (
     <div className="flex flex-col lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
       
@@ -78,8 +81,8 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
       <div className="flex flex-col gap-5 w-full justify-center items-center">
         <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
-          <StatItem value={snippets[codeAlgorithm][codeLanguage]?.complexity.best} label="BEST CASE" />
-          <StatItem value={snippets[codeAlgorithm][codeLanguage]?.complexity.worst} label="WORST CASE" />
+          <StatItem value={bestCase} label="BEST CASE" />
+          <StatItem value={worstCase} label="WORST CASE" />
           <StatItem value="22.20s" label="TIMER" />
           <StatItem value="12" label="STEPS" />
           <StatItem value="8" label="SWAPS" />
