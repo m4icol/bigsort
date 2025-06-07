@@ -10,8 +10,8 @@ const quickSharedSteps = [
     worst: 'O(n²)'
   };
   
-  export const quick = {
-    java: {
+  export const QUICK = {
+    JAVA: {
       code: `
   public class QuickSort {
     public static void quickSort(int[] arr, int low, int high) {
@@ -44,7 +44,7 @@ const quickSharedSteps = [
       complexity: quickSharedComplexity
     },
   
-    python: {
+    PYTHON: {
       code: `
   def quick_sort(arr, low, high):
       if low < high:
@@ -66,7 +66,7 @@ const quickSharedSteps = [
       complexity: quickSharedComplexity
     },
   
-    javascript: {
+    JAVASCRIPT: {
       code: `
   function quickSort(arr, low, high) {
     if (low < high) {

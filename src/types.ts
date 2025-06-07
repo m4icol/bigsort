@@ -1,2 +1,2 @@
-export type LanguageKey = "java" | "python" | "javascript";
-export type AlgorithmKey = "bumble" | "insertion" | "selection" | "quick"
+export type LanguageKey = "JAVA" | "PYTHON" | "JAVASCRIPT";
+export type AlgorithmKey = "BUMBLE" | "INSERTION" | "SELECTION" | "QUICK"

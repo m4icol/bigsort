@@ -33,13 +33,13 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm}: SidebarCod
                         codeLanguage={codeLanguage}
                         setCodeLanguage={setCodeLanguage}
                         options={[<IconJS />, <IconJava />, <IconPython />]}
-                        values={['javascript', 'java', 'python']}
+                        values={['JAVASCRIPT', 'JAVA', 'PYTHON']}
                     />
     
                 </SidebarSection>
 
                 <SidebarSection title="CODE">
-                    <CodeField algorithm={codeAlgorithm} codeLanguage={codeLanguage} />
+                    <CodeField codeAlgorithm={codeAlgorithm} codeLanguage={codeLanguage} />
                 </SidebarSection>
 
                 <SidebarSection title="STEP BY STEP">

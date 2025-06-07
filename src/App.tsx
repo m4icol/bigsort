@@ -11,8 +11,8 @@ function App() {
     setRangeValue(randomValue);
   };
 
-  const [codeAlgorithm,setCodeAlgorithm] = useState<AlgorithmKey>("bumble");
-  const [codeLanguage, setCodeLanguage] = useState<LanguageKey>("javascript");
+  const [codeAlgorithm,setCodeAlgorithm] = useState<AlgorithmKey>("BUMBLE");
+  const [codeLanguage, setCodeLanguage] = useState<LanguageKey>("JAVASCRIPT");
 
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
@@ -25,7 +25,7 @@ function App() {
         setCodeAlgorithm={setCodeAlgorithm}
         />
 
-      <BigSort randomNumberItems={rangeValue} />
+      <BigSort randomNumberItems={rangeValue} codeLanguage={codeLanguage} codeAlgorithm={codeAlgorithm}/>
       <SidebarCode codeLanguage={codeLanguage} setCodeLanguage={setCodeLanguage} codeAlgorithm={codeAlgorithm}/>
     </div>
   )

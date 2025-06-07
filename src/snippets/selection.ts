@@ -10,8 +10,8 @@ const selectionSharedSteps = [
     worst: 'O(n²)'
   };
   
-  export const selection = {
-    java: {
+  export const SELECTION = {
+    JAVA: {
       code: `
   public class SelectionSort {
     public static void selectionSort(int[] arr) {
@@ -34,7 +34,7 @@ const selectionSharedSteps = [
       complexity: selectionSharedComplexity
     },
   
-    python: {
+    PYTHON: {
       code: `
   def selection_sort(arr):
       n = len(arr)
@@ -49,7 +49,7 @@ const selectionSharedSteps = [
       complexity: selectionSharedComplexity
     },
   
-    javascript: {
+    JAVASCRIPT: {
       code: `
   function selectionSort(arr) {
     let n = arr.length;

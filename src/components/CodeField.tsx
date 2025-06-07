@@ -1,15 +1,15 @@
 import { snippets } from "../snippets";
+import type { LanguageKey } from "../types";
 
 type AlgorithmKey = keyof typeof snippets;
-type LanguageKey = "java" | "python" | "javascript";
 type CodeFieldProps = {
-  algorithm: AlgorithmKey;
+  codeAlgorithm: AlgorithmKey;
   codeLanguage: LanguageKey;
 };
 
-export default function CodeField({ algorithm, codeLanguage }: CodeFieldProps) {
-  const langKey = codeLanguage.toLowerCase() as LanguageKey;
-  const code = snippets[algorithm][langKey]?.code ?? "// Code not available.";
+export default function CodeField({ codeAlgorithm, codeLanguage }: CodeFieldProps) {
+  const langKey = codeLanguage as LanguageKey;
+  const code = snippets[codeAlgorithm][langKey]?.code ?? "// Code not available.";
 
   return (
     <div className="bg-BM-active rounded-lg border-1 border-BM-border">

@@ -5,13 +5,12 @@ type DropdownProps = {
     codeAlgorithm: AlgorithmKey;
     setCodeAlgorithm: (value: AlgorithmKey) => void;
 
-    options: string[];
     values: AlgorithmKey[];
     dropdownPositionClass?: string;
     onSelected?: (value: AlgorithmKey)=> void;
 }
 
-export default function Dropdown({codeAlgorithm, setCodeAlgorithm, values, options, dropdownPositionClass ,onSelected}: DropdownProps) {
+export default function Dropdown({codeAlgorithm, setCodeAlgorithm, values, dropdownPositionClass ,onSelected}: DropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -48,7 +47,7 @@ export default function Dropdown({codeAlgorithm, setCodeAlgorithm, values, optio
             {isOpen && (
                 <div className={`w-full absolute z-10 rounded-lg shadow-sm cursor-pointer bg-BM-sidebar text-BM-subtext border-1 ${dropdownPositionClass || 'mt-2'}`}>
                     <ul className="py-2 text-sm">
-                        {options.map((option, index) => {
+                        {values.map((option, index) => {
                             const value = values[index];
                             return(
                                 <li key={value}>

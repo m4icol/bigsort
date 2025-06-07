@@ -7,12 +7,15 @@ import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
 import { snippets } from "../snippets";
+import type { AlgorithmKey, LanguageKey } from "../types";
 
 type BigSortProps = {
   randomNumberItems: number;
+  codeLanguage: LanguageKey,
+  codeAlgorithm: AlgorithmKey;
 };
 
-function BigSort({ randomNumberItems }: BigSortProps) {
+function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProps) {
   const [currentList, setCurrentList] = useState<number[]>([]);
 
   const createList = (items: number) => {
@@ -75,8 +78,8 @@ function BigSort({ randomNumberItems }: BigSortProps) {
       <div className="flex flex-col gap-5 w-full justify-center items-center">
         <h3 className="font-semibold text-center">COMPLEXITY AND STATS</h3>
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
-          <StatItem value={snippets["bumble"]["javascript"]?.complexity.best} label="BEST CASE" />
-          <StatItem value={snippets["bumble"]["javascript"]?.complexity.worst} label="WORST CASE" />
+          <StatItem value={snippets[codeAlgorithm][codeLanguage]?.complexity.best} label="BEST CASE" />
+          <StatItem value={snippets[codeAlgorithm][codeLanguage]?.complexity.worst} label="WORST CASE" />
           <StatItem value="22.20s" label="TIMER" />
           <StatItem value="12" label="STEPS" />
           <StatItem value="8" label="SWAPS" />

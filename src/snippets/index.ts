@@ -1,11 +1,11 @@
-import { bumble } from './bumble';
-import { insertion } from './insert';
-import { quick } from './quick';
-import { selection } from './selection';
+import { BUMBLE } from './bumble';
+import { INSERTION } from './insertion';
+import { QUICK } from './quick';
+import { SELECTION } from './selection';
 
 export const snippets = {
-  bumble,
-  insertion,
-  selection,
-  quick
+  BUMBLE,
+  INSERTION,
+  SELECTION,
+  QUICK
 };

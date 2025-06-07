@@ -11,8 +11,8 @@ const insertionSharedSteps = [
     worst: 'O(n²)'
   };
   
-  export const insertion = {
-    java: {
+  export const INSERTION = {
+    JAVA: {
       code: `
   public class InsertionSort {
     public static void insertionSort(int[] arr) {
@@ -33,7 +33,7 @@ const insertionSharedSteps = [
       complexity: insertionSharedComplexity
     },
   
-    python: {
+    PYTHON: {
       code: `
   def insertion_sort(arr):
       n = len(arr)
@@ -49,7 +49,7 @@ const insertionSharedSteps = [
       complexity: insertionSharedComplexity
     },
   
-    javascript: {
+    JAVASCRIPT: {
       code: `
   function insertionSort(arr) {
     let n = arr.length;

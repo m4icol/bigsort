@@ -6,8 +6,8 @@ const sharedSteps = [
     worst: 'O(n²)'
   };
   
-  export const bumble = {
-    java: {
+  export const BUMBLE = {
+    JAVA: {
       code: `
   public class BumbleSort {
     public static void bumbleSort(int[] arr) {
@@ -32,7 +32,7 @@ const sharedSteps = [
       complexity: sharedComplexity
     },
   
-    python: {
+    PYTHON: {
       code: `
   def bumble_sort(arr):
       n = len(arr)
@@ -49,7 +49,7 @@ const sharedSteps = [
       complexity: sharedComplexity
     },
   
-    javascript: {
+    JAVASCRIPT: {
       code: `
   function bumbleSort(arr) {
     let n = arr.length;

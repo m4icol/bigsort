@@ -42,9 +42,8 @@ type SidebarSettingsProps = {
                 <DropdownCode 
                 codeAlgorithm={codeAlgorithm}
                 setCodeAlgorithm={setCodeAlgorithm}
-                dropdownPositionClass="mt-2 top-full" 
-                options={["BUMBLE", "INSERT", "SELECTED", "QUICK"]} 
-                values={['bumble', 'insertion', 'selection', 'quick']} />
+                dropdownPositionClass="mt-2 top-full"
+                values={['BUMBLE', 'INSERTION', 'SELECTION', 'QUICK']} />
             </SidebarSection>
 
             <div className="flex flex-col gap-2">
