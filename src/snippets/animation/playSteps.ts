@@ -2,18 +2,27 @@ import type { SortStep } from "./sortSteps";
 
 export async function playSteps(
     steps: SortStep[],
-    array: number[],
-    setArray: React.Dispatch<React.SetStateAction<number[]>>
+    arr: number[],
+    setArray: (arr: number[]) => void,
+    setActive: (indices: number[]) => void,
+    setAction: (type: "compare" | "swap" | null) => void,
 ){
-    const arr = [...array];
-
     for (const step of steps) {
+
+        const {type, indices} = step;
+
+        setActive(indices);
+        setAction(type);
+
+        await new Promise((res) => setTimeout(res, 400))
+
         if(step.type === 'swap'){
             const [i, j] = step.indices;
             [arr[i], arr[j]] = [arr[j], arr[i]]
             setArray([...arr]);
         }
 
-        await new Promise((res) => setTimeout(res, 100))
+        setActive([]);
+        setAction(null);
     }
 }

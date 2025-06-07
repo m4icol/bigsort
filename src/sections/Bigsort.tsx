@@ -45,7 +45,10 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
 
   const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
   const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
-
+  
+  const [activeIndices, setActiveIndices] = useState<number[]>([]);
+  const [actionType, setActionType] = useState<"compare" | "swap" | null>(null);
+  
   const handleRun = () => {
     let steps: SortStep[] = [];
   
@@ -58,8 +61,16 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
     } else if (codeAlgorithm === "QUICK") {
       steps = getQuickSortSteps(currentList);
     }
-    playSteps(steps, currentList, setCurrentList);
+    playSteps(
+      steps,
+      currentList,
+      setCurrentList,
+      setActiveIndices,
+      setActionType
+    );
+    
   };
+
   
   return (
     <div className="flex flex-col lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
@@ -75,8 +86,15 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
         
         <div className="flex flex-row gap-2.5 h-90 px-10 justify-center items-end overflow-x-hidden w-full overflow-y-hidden">
           {currentList.map((element, i) => (
-            <LayoutBar key={i} level={element} index={i + 1} />
+            <LayoutBar
+              key={i}
+              level={element}
+              index={i + 1}
+              isActive={activeIndices.includes(i)}
+              actionType={actionType}
+            />
           ))}
+
         </div>
 
         <div className="flex flex-col justify-center items-center gap-4 px-5">
