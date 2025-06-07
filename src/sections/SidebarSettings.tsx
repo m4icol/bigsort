@@ -9,7 +9,7 @@ import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
 import type { AlgorithmKey } from "../types";
 import DropdownCode from "../components/DropdownCode";
-import React, { useState } from "react";
+import { useState } from "react";
 
 type SidebarSettingsProps = {
     rangeValue: number;
