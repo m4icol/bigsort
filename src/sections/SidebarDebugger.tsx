@@ -7,10 +7,10 @@ import IconGithub from "../components/icons/general/IconGithub";
 import IconJS from "../components/icons/languajes/IconJS";
 import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
-import SwitchOptionCode from "../components/SwitchOptionCode";
 
 import type { AlgorithmKey, LanguageKey } from "../types";
 import { snippets } from "../snippets";
+import SwitchOption from "../components/SwitchOption";
 
 type SidebarCodeProps = {
   codeLanguage: LanguageKey,
@@ -28,15 +28,14 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm}: SidebarCod
             position="right-0 lg:right-5"
             rounded="rounded-bl-2xl lg:rounded-2xl"
         >   
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 mb-5">
                 <SidebarSection title="VISUAL MODE">
-                    <SwitchOptionCode
-                        codeLanguage={codeLanguage}
-                        setCodeLanguage={setCodeLanguage}
+                    <SwitchOption<LanguageKey>
+                        selectedValue={codeLanguage}
+                        setSelectedValue={setCodeLanguage}
                         options={[<IconJS />, <IconJava />, <IconPython />]}
                         values={['JAVASCRIPT', 'JAVA', 'PYTHON']}
                     />
-    
                 </SidebarSection>
 
                 <SidebarSection title="CODE">
