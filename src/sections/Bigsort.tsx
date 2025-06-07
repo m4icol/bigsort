@@ -7,7 +7,7 @@ import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
-import type { AlgorithmKey, LanguageKey } from "../types";
+import type { AlgorithmKey, LanguageKey, SpeedKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bumbleSteps";
 import { playSteps } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
@@ -19,9 +19,10 @@ type BigSortProps = {
   randomNumberItems: number;
   codeLanguage: LanguageKey,
   codeAlgorithm: AlgorithmKey;
+  algSpeed: SpeedKey;
 };
 
-function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProps) {
+function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed }: BigSortProps) {
   const [currentList, setCurrentList] = useState<number[]>([]);
 
   const createList = (items: number) => {
@@ -48,6 +49,15 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
   
   const [activeIndices, setActiveIndices] = useState<number[]>([]);
   const [actionType, setActionType] = useState<"compare" | "swap" | null>(null);
+
+  const speedMap: Record<SpeedKey, number> = {
+    "0.5x": 800,
+    "1.0x": 400,
+    "1.5x": 266,
+    "2.0x": 200,
+  };
+  
+  const delayMs = speedMap[algSpeed];
   
   const handleRun = () => {
     let steps: SortStep[] = [];
@@ -64,9 +74,10 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm }: BigSortProp
     playSteps(
       steps,
       currentList,
+      delayMs,
       setCurrentList,
       setActiveIndices,
-      setActionType
+      setActionType,
     );
     
   };

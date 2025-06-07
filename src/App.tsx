@@ -2,7 +2,7 @@ import { useState } from "react";
 import BigSort from "./sections/Bigsort";
 import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
-import type { AlgorithmKey, LanguageKey } from "./types";
+import type { AlgorithmKey, LanguageKey, SpeedKey } from "./types";
 function App() {
   const [rangeValue, setRangeValue] = useState(12);
 
@@ -14,6 +14,8 @@ function App() {
   const [codeAlgorithm,setCodeAlgorithm] = useState<AlgorithmKey>("BUMBLE");
   const [codeLanguage, setCodeLanguage] = useState<LanguageKey>("JAVASCRIPT");
 
+  const [algSpeed, setAlgSpeed] = useState<SpeedKey>("1.0x");
+
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
       <SidebarSettings         
@@ -23,10 +25,23 @@ function App() {
 
         codeAlgorithm={codeAlgorithm}
         setCodeAlgorithm={setCodeAlgorithm}
-        />
 
-      <BigSort randomNumberItems={rangeValue} codeLanguage={codeLanguage} codeAlgorithm={codeAlgorithm}/>
-      <SidebarCode codeLanguage={codeLanguage} setCodeLanguage={setCodeLanguage} codeAlgorithm={codeAlgorithm}/>
+        algSpeed={algSpeed}
+        setAlgSpeed={setAlgSpeed}
+      />
+
+      <BigSort 
+        randomNumberItems={rangeValue} 
+        codeLanguage={codeLanguage} 
+        codeAlgorithm={codeAlgorithm}
+        algSpeed={algSpeed}
+      />
+
+      <SidebarCode 
+        codeLanguage={codeLanguage} 
+        setCodeLanguage={setCodeLanguage} 
+        codeAlgorithm={codeAlgorithm}
+      />
     </div>
   )
 }

@@ -7,7 +7,7 @@ import SunIcon from "../components/icons/general/IconSun";
 import MoonIcon from "../components/icons/general/IconMoon";
 import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
-import type { AlgorithmKey } from "../types";
+import type { AlgorithmKey, SpeedKey } from "../types";
 import { useState } from "react";
 
 type SidebarSettingsProps = {
@@ -17,6 +17,9 @@ type SidebarSettingsProps = {
 
     codeAlgorithm: AlgorithmKey;
     setCodeAlgorithm: (value: AlgorithmKey) => void;
+
+    algSpeed: SpeedKey;
+    setAlgSpeed: (value: SpeedKey) => void;
   };
 
   function SidebarSettings({
@@ -26,9 +29,11 @@ type SidebarSettingsProps = {
 
     codeAlgorithm,
     setCodeAlgorithm,
+
+    algSpeed,
+    setAlgSpeed
   }: SidebarSettingsProps) {
 
-    const [tempSpeed, setTempSpeed] = useState("1.0x");
     const [tempOrder, setTempOrder] = useState("ASCENDING");
     const [tempLayout, setTempLayout] = useState("BARRS");
     const [tempTheme, setTempTheme] = useState("DARK_MODE");
@@ -68,9 +73,9 @@ type SidebarSettingsProps = {
             </div>
 
             <SidebarSection title="SPEED">
-                <SwitchOption<string>
-                    selectedValue={tempSpeed}
-                    setSelectedValue={setTempSpeed}
+                <SwitchOption<SpeedKey>
+                    selectedValue={algSpeed}
+                    setSelectedValue={setAlgSpeed}
                     options={["0.5x", "1.0x", "1.5x", "2.0x"]}
                     values={["0.5x", "1.0x", "1.5x", "2.0x"]}
                 />

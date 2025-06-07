@@ -3,6 +3,7 @@ import type { SortStep } from "./sortSteps";
 export async function playSteps(
     steps: SortStep[],
     arr: number[],
+    delayMs: number,
     setArray: (arr: number[]) => void,
     setActive: (indices: number[]) => void,
     setAction: (type: "compare" | "swap" | null) => void,
@@ -14,7 +15,7 @@ export async function playSteps(
         setActive(indices);
         setAction(type);
 
-        await new Promise((res) => setTimeout(res, 400))
+        await new Promise((res) => setTimeout(res, delayMs))
 
         if(step.type === 'swap'){
             const [i, j] = step.indices;
