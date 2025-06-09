@@ -43,9 +43,9 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: S
                 </SidebarSection>
 
                 <SidebarSection title="STEP BY STEP">
-                    <div className="bg-BM-sidebar px-3 py-2 text-BM-text text-sm rounded-lg border-1 border-BM-border">
+                    <div className="bg-BM-sidebar px-3 py-2 text-BM-text rounded-lg border-1 border-BM-border">
                         <ul className="list-decimal list-inside space-y-1 text-xs">
-                            <p className="text-BM-subtext">{message}</p>
+                            <p className="text-BM-text">{(!message) ? `(${codeAlgorithm} SORT) Waiting...` : `${message}`}</p>
                         </ul>
                     </div>
                 </SidebarSection>
