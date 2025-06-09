@@ -7,23 +7,32 @@ export async function playSteps(
     setArray: (arr: number[]) => void,
     setActive: (indices: number[]) => void,
     setAction: (type: "compare" | "swap" | null) => void,
+    setMessage: (message: string | null) => void
 ){
     for (const step of steps) {
 
-        const {type, indices} = step;
+        const {type, indices, message} = step;
 
-        setActive(indices);
-        setAction(type);
+        if (type === 'message') {
+            if (setMessage && message) {
+                setMessage(message);
+                setActive(indices)
+            }
+        } else {
+            setActive(indices);
+            setAction(type);
+            if (step.type === 'swap') {
+                const [i, j] = step.indices;
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+                setArray([...arr]);
+            }
+        }
 
         await new Promise((res) => setTimeout(res, delayMs))
 
-        if(step.type === 'swap'){
-            const [i, j] = step.indices;
-            [arr[i], arr[j]] = [arr[j], arr[i]]
-            setArray([...arr]);
-        }
-
         setActive([]);
-        setAction(null);
+        if (type !== 'message') {
+            setAction(null)
+        }
     }
 }

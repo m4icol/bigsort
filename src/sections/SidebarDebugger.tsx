@@ -9,7 +9,6 @@ import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
 
 import type { AlgorithmKey, LanguageKey } from "../types";
-import { snippets } from "../snippets/debugger";
 import SwitchOption from "../components/SwitchOption";
 
 type SidebarCodeProps = {
@@ -17,9 +16,10 @@ type SidebarCodeProps = {
   setCodeLanguage: (value: LanguageKey) => void;
 
   codeAlgorithm: AlgorithmKey;
+  message: string | null;
 }
 
-function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm}: SidebarCodeProps) {
+function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: SidebarCodeProps) {
     return (
         <Sidebar
             title="DEBUGGER"
@@ -45,11 +45,7 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm}: SidebarCod
                 <SidebarSection title="STEP BY STEP">
                     <div className="bg-BM-sidebar px-3 py-2 text-BM-text text-sm rounded-lg border-1 border-BM-border">
                         <ul className="list-decimal list-inside space-y-1 text-xs">
-                            {snippets[codeAlgorithm][codeLanguage]?.steps?.map((stepObj, index) => (
-                                <li key={index}>{stepObj.action}</li>
-                            )) ?? (
-                                <p className="text-BM-subtext">No steps available.</p>
-                            )}
+                            <p className="text-BM-subtext">{message}</p>
                         </ul>
                     </div>
                 </SidebarSection>

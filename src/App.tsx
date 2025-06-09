@@ -16,6 +16,8 @@ function App() {
 
   const [algSpeed, setAlgSpeed] = useState<SpeedKey>("1.0x");
 
+  const [message, setMessage] = useState<string | null>(null);
+
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
       <SidebarSettings         
@@ -35,12 +37,14 @@ function App() {
         codeLanguage={codeLanguage} 
         codeAlgorithm={codeAlgorithm}
         algSpeed={algSpeed}
+        setMessage={setMessage}
       />
 
       <SidebarCode 
         codeLanguage={codeLanguage} 
         setCodeLanguage={setCodeLanguage} 
         codeAlgorithm={codeAlgorithm}
+        message={message}
       />
     </div>
   )

@@ -19,9 +19,10 @@ type BigSortProps = {
   codeLanguage: LanguageKey,
   codeAlgorithm: AlgorithmKey;
   algSpeed: SpeedKey;
+  setMessage: (message: string | null) => void;
 };
 
-function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed }: BigSortProps) {
+function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, setMessage }: BigSortProps) {
   const [currentList, setCurrentList] = useState<number[]>([]);
 
   const createList = (items: number) => {
@@ -50,10 +51,10 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed }: B
   const [actionType, setActionType] = useState<"compare" | "swap" | null>(null);
 
   const speedMap: Record<SpeedKey, number> = {
-    "0.5x": 800,
-    "1.0x": 400,
-    "1.5x": 266,
-    "2.0x": 200,
+    "0.5x": 1000,
+    "1.0x": 500,
+    "1.5x": 400,
+    "2.0x": 300,
   };
   
   const delayMs = speedMap[algSpeed];
@@ -77,6 +78,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed }: B
       setCurrentList,
       setActiveIndices,
       setActionType,
+      setMessage,
     );
     
   };

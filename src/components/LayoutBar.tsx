@@ -11,7 +11,7 @@ function LayoutBar({level = 1, index, isActive, actionType }: LayoutBarProps) {
         if (!isActive) return "bg-BM-sidebar";
         if (actionType === "compare") return "bg-BM-bars-compare/80";
         if (actionType === "swap") return " bg-BM-bars-swap/80";
-        return "bg-blue-500";
+        return "bg-BM-sidebar";
       };
 
     const calculateHeight = (level: number): number => {
