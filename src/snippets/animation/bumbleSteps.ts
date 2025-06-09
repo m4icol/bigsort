@@ -9,7 +9,7 @@ export function getBubbleSortSteps(array: number[]): SortStep[] {
     steps.push({ 
       type: 'message', 
       indices: [], 
-      message: `Pass ${i + 1}: Looking for the largest element in the first ${arr.length - i} positions` 
+      message: `Pass ${i + 1}: Bubble up the largest element among the first ${arr.length - i} elements`
     });
 
     for (let j = 0; j < arr.length - i - 1; j++) {
@@ -17,7 +17,7 @@ export function getBubbleSortSteps(array: number[]): SortStep[] {
       steps.push({ 
         type: 'message', 
         indices: [j, j + 1], 
-        message: `Comparing ${arr[j]} with ${arr[j + 1]}` 
+        message: `Comparing ${arr[j]} and ${arr[j + 1]}`
       });
 
       steps.push({ type: 'compare', indices: [j, j + 1] });
@@ -27,12 +27,11 @@ export function getBubbleSortSteps(array: number[]): SortStep[] {
         steps.push({ 
           type: 'message', 
           indices: [j, j + 1], 
-          message: `${arr[j]} > ${arr[j + 1]}, swapping positions` 
+          message: `${arr[j]} > ${arr[j + 1]} → swapping`
         });
 
         steps.push({ type: 'swap', indices: [j, j + 1] });
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-
       }
     }
   }
@@ -40,7 +39,7 @@ export function getBubbleSortSteps(array: number[]): SortStep[] {
   steps.push({ 
     type: 'message', 
     indices: [], 
-    message: `Done! Final array: [${arr.join(', ')}]` 
+    message: `Sorting complete! Final array: [${arr.join(', ')}]` 
   });
 
   return steps;

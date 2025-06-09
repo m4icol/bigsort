@@ -4,7 +4,7 @@ import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
 import type { AlgorithmKey, LanguageKey, SpeedKey } from "./types";
 function App() {
-  const [rangeValue, setRangeValue] = useState(12);
+  const [rangeValue, setRangeValue] = useState(10);
 
   const generateRandomValue = () => {
     const randomValue = Math.floor(Math.random() * 16) + 5;

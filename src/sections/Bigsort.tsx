@@ -51,10 +51,10 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   const [actionType, setActionType] = useState<"compare" | "swap" | null>(null);
 
   const speedMap: Record<SpeedKey, number> = {
-    "0.5x": 1200,
-    "1.0x": 800,
-    "1.5x": 600,
-    "2.0x": 400,
+    "0.5x": 1500,
+    "1.0x": 900,
+    "1.5x": 650,
+    "2.0x": 500,
   };
   
   const delayMs = speedMap[algSpeed];
