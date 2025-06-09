@@ -8,11 +8,10 @@ html, body {
     --color-BM-background: #161616;
     --color-BM-sidebar: #242424;
     --color-BM-bars-compare: #F4E4CB;
-    --color-BM-bars-swap: #D6F4CB;
-    --color-BM-bars-message: #CBD8F4;
-    --color-BM-subtext: #bbbbbb;
+    --color-BM-bars-swap: #CBD8F4;
     --color-BM-active: #3A3A3A;
     --color-BM-border: #7E7E7E;
+    --color-BM-subtext: #bbbbbb;
     --text-color-BM-text: #ffffff;
     --text-color-BM-subtext: #bbbbbb;
     --font-display: "Poppins";

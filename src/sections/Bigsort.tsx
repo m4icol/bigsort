@@ -134,7 +134,6 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
           <StatItem value={bestCase} label="BEST CASE" />
           <StatItem value={worstCase} label="WORST CASE" />
-          <StatItem value="22.20s" label="TIMER" />
           <StatItem value="12" label="STEPS" />
           <StatItem value="8" label="SWAPS" />
         </div>
