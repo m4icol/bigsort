@@ -1,10 +1,4 @@
-const selectionSharedSteps = [
-    { step: 1, action: 'Find minimum element in unsorted portion.' },
-    { step: 2, action: 'Swap minimum with first unsorted element.' },
-    { step: 3, action: 'Move boundary of sorted portion one position.' },
-    { step: 4, action: 'Repeat until entire array is sorted.' }
-  ];
-  
+
   const selectionSharedComplexity = {
     best: 'O(n²)',
     worst: 'O(n²)'
@@ -30,7 +24,6 @@ const selectionSharedSteps = [
     }
   }
       `.trim(),
-      steps: selectionSharedSteps,
       complexity: selectionSharedComplexity
     },
   
@@ -45,7 +38,6 @@ const selectionSharedSteps = [
                   min_idx = j
           arr[min_idx], arr[i] = arr[i], arr[min_idx]
       `.trim(),
-      steps: selectionSharedSteps,
       complexity: selectionSharedComplexity
     },
   
@@ -64,7 +56,6 @@ const selectionSharedSteps = [
     }
   }
       `.trim(),
-      steps: selectionSharedSteps,
       complexity: selectionSharedComplexity
     }
   };

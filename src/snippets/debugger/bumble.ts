@@ -1,6 +1,4 @@
-const sharedSteps = [
-    { step: 1, action: 'Start with swapped = true to enter the loop.' }
-  ];
+
   const sharedComplexity = {
     best: 'O(n)',
     worst: 'O(n²)'
@@ -28,7 +26,6 @@ const sharedSteps = [
     }
   }
       `.trim(),
-      steps: sharedSteps,
       complexity: sharedComplexity
     },
   
@@ -45,7 +42,6 @@ const sharedSteps = [
                   swapped = True
           n -= 1
       `.trim(),
-      steps: sharedSteps,
       complexity: sharedComplexity
     },
   
@@ -66,7 +62,6 @@ const sharedSteps = [
     }
   }
       `.trim(),
-      steps: sharedSteps,
       complexity: sharedComplexity
     }
   };

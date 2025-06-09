@@ -1,11 +1,5 @@
 
-const insertionSharedSteps = [
-    { step: 1, action: 'Start from the second element (index 1).' },
-    { step: 2, action: 'Compare current element with previous elements.' },
-    { step: 3, action: 'Shift larger elements to the right.' },
-    { step: 4, action: 'Insert current element in correct position.' }
-  ];
-  
+
   const insertionSharedComplexity = {
     best: 'O(n)',
     worst: 'O(n²)'
@@ -29,7 +23,6 @@ const insertionSharedSteps = [
     }
   }
       `.trim(),
-      steps: insertionSharedSteps,
       complexity: insertionSharedComplexity
     },
   
@@ -45,7 +38,6 @@ const insertionSharedSteps = [
               j -= 1
           arr[j + 1] = key
       `.trim(),
-      steps: insertionSharedSteps,
       complexity: insertionSharedComplexity
     },
   
@@ -64,7 +56,6 @@ const insertionSharedSteps = [
     }
   }
       `.trim(),
-      steps: insertionSharedSteps,
       complexity: insertionSharedComplexity
     }
   };

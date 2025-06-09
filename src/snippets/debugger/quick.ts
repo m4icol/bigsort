@@ -1,10 +1,4 @@
-const quickSharedSteps = [
-    { step: 1, action: 'Choose a pivot element from the array.' },
-    { step: 2, action: 'Partition array around pivot.' },
-    { step: 3, action: 'Recursively sort left and right subarrays.' },
-    { step: 4, action: 'Combine results (no merge needed).' }
-  ];
-  
+
   const quickSharedComplexity = {
     best: 'O(n log n)',
     worst: 'O(n²)'
@@ -40,7 +34,6 @@ const quickSharedSteps = [
     }
   }
       `.trim(),
-      steps: quickSharedSteps,
       complexity: quickSharedComplexity
     },
   
@@ -62,7 +55,6 @@ const quickSharedSteps = [
       arr[i + 1], arr[high] = arr[high], arr[i + 1]
       return i + 1
       `.trim(),
-      steps: quickSharedSteps,
       complexity: quickSharedComplexity
     },
   
@@ -89,7 +81,6 @@ const quickSharedSteps = [
     return i + 1;
   }
       `.trim(),
-      steps: quickSharedSteps,
       complexity: quickSharedComplexity
     }
   };
