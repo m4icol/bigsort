@@ -10,7 +10,10 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
     steps.push({ 
       type: 'message', 
       indices: Array.from({ length: end - start + 1 }, (_, i) => start + i), 
-      message: `Sorting subarray [${start}..${end}] using pivot ${arr[end]}`
+      message: {
+        title: "SORTING SUB-ARRAY",
+        description: `[${start}..${end}] using pivot ${arr[end]}`
+      }
     });
 
     const pivotIndex = partition(start, end);
@@ -26,7 +29,10 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
       steps.push({ 
         type: 'message', 
         indices: [j, end], 
-        message: `Comparing ${arr[j]} with pivot ${pivot}`
+        message: {
+          title: "COMPARING",
+          description: `${arr[j]} (index ${j}) with pivot ${pivot}`
+        }
       });
 
       steps.push({ type: 'compare', indices: [j, end] });
@@ -35,7 +41,10 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
         steps.push({ 
           type: 'message', 
           indices: [i, j], 
-          message: `${arr[j]} < ${pivot} → move to left partition`
+          message: {
+            title: "SWAPPING",
+            description: `Moving ${arr[j]} (index ${j}) to left partition by swapping with ${arr[i]} (index ${i})`
+          }
         });
 
         steps.push({ type: 'swap', indices: [i, j] });
@@ -47,7 +56,10 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
     steps.push({ 
       type: 'message', 
       indices: [i, end], 
-      message: `Placing pivot ${pivot} at index ${i}`
+      message: {
+        title: "PLACING PIVOT",
+        description: `Placing ${pivot} at index ${i}`
+      }
     });
 
     steps.push({ type: 'swap', indices: [i, end] });
@@ -60,7 +72,10 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
   steps.push({ 
     type: 'message', 
     indices: [], 
-    message: `Sorting complete! Final array: [${arr.join(', ')}]`
+    message: {
+      title: "SORTING COMPLETE",
+      description: `Final array: [${arr.join(', ')}]` 
+    }
   });
 
   return steps;

@@ -8,7 +8,10 @@ export function getSelectionSortSteps(array: number[]): SortStep[] {
     steps.push({ 
       type: 'message', 
       indices: [i], 
-      message: `Pass ${i + 1}: Searching for the minimum element from index ${i} onward`
+      message: {
+        title: "SELECTION INIT",
+        description: `Pass ${i + 1}: Searching for the minimum element from index ${i} onward`
+      }
     });
 
     let minIndex = i;
@@ -17,7 +20,10 @@ export function getSelectionSortSteps(array: number[]): SortStep[] {
       steps.push({ 
         type: 'message', 
         indices: [minIndex, j], 
-        message: `Comparing ${arr[minIndex]} and ${arr[j]}`
+        message: {
+          title: "COMPARING",
+          description: `Checking if  ${arr[j]} (index ${j}) < ${arr[minIndex]} (index${minIndex})`
+        }
       });
 
       steps.push({ type: 'compare', indices: [minIndex, j] });
@@ -27,7 +33,10 @@ export function getSelectionSortSteps(array: number[]): SortStep[] {
         steps.push({ 
           type: 'message', 
           indices: [minIndex], 
-          message: `New minimum found: ${arr[minIndex]} at index ${minIndex}`
+          message: {
+            title: "NEW MINIMUM FOUND",
+            description: `New minimum: ${arr[minIndex]} at index ${minIndex}`
+          }
         });
       }
     }
@@ -36,7 +45,10 @@ export function getSelectionSortSteps(array: number[]): SortStep[] {
       steps.push({ 
         type: 'message', 
         indices: [i, minIndex], 
-        message: `Swapping ${arr[i]} and ${arr[minIndex]}`
+        message: {
+          title: "SWAPPING",
+          description: `${arr[i]}(index ${i}) and ${arr[minIndex]} (index ${minIndex})`
+        }
       });
       
       steps.push({ type: 'swap', indices: [i, minIndex] });
@@ -47,7 +59,10 @@ export function getSelectionSortSteps(array: number[]): SortStep[] {
   steps.push({ 
     type: 'message', 
     indices: [], 
-    message: `Sorting complete! Final array: [${arr.join(', ')}]`
+    message: {
+      title: "SORTING COMPLETE",
+      description: `Final array: [${arr.join(', ')}]` 
+    }
   });
 
   return steps;

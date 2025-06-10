@@ -9,7 +9,10 @@ export function getInsertionSortSteps(array: number[]): SortStep[] {
       steps.push({
         type: 'message',
         indices: [i],
-        message: `Current value: ${arr[i]}. Searching correct position in the sorted part`
+        message: {
+          title: "INSERTION INIT",
+          description: `Current value: ${arr[i]}. Searching correct position in the sorted part`
+        }
       });
        
       let j = i;
@@ -18,7 +21,10 @@ export function getInsertionSortSteps(array: number[]): SortStep[] {
         steps.push({
           type: 'message',
           indices: [j - 1, j],
-          message: `${arr[j - 1]} > ${arr[j]} → shift ${arr[j - 1]} to the right`
+          message: {
+            title: "INSERTING",
+            description: `${arr[j - 1]} > ${arr[j]} = true, shifting ${arr[j]} left to find its correct position`
+          }
         });
 
         steps.push({ type: 'compare', indices: [j - 1, j] });
@@ -29,23 +35,25 @@ export function getInsertionSortSteps(array: number[]): SortStep[] {
       }
 
       if (j > 0) {
-        steps.push({ 
-          type: 'compare', 
-          indices: [j - 1, j] 
+        steps.push({
+          type: 'message',
+          indices: [j - 1, j],
+          message: {
+            title: "NO SWAP NEEDED",
+            description: `Comparing ${arr[j - 1]} with ${arr[j]}`
+          }
         });
+        steps.push({ type: 'compare', indices: [j - 1, j] });
       }
-
-      steps.push({
-        type: 'message',
-        indices: [j],
-        message: `${arr[j]} placed at correct position`
-      });
     }
 
     steps.push({
       type: 'message',
       indices: [],
-      message: `Sorting complete! [${arr.join(', ')}]`
+      message: {
+        title: "SORTING COMPLETE",
+        description: `Final array: [${arr.join(', ')}]` 
+      }
     });
   
     return steps;

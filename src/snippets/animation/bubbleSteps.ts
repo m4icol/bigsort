@@ -15,8 +15,6 @@ export function getBubbleSortSteps(array: number[]): SortStep[] {
       }
     });
 
-    
-
     for (let j = 0; j < arr.length - i - 1; j++) {
 
       steps.push({ 

@@ -54,9 +54,9 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   const [countSwaps, setCountSwaps] = useState<number>(0);
 
   const speedMap: Record<SpeedKey, number> = {
-    "0.5x": 1500,
-    "1.0x": 900,
-    "1.5x": 650,
+    "0.5x": 1600,
+    "1.0x": 1000,
+    "1.5x": 700,
     "2.0x": 500,
   };
   
