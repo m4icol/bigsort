@@ -1,4 +1,4 @@
-import type { SortStep } from "../../types";
+import type { MessageKey, SortStep } from "../../types";
 
 export async function playSteps(
     steps: SortStep[],
@@ -9,7 +9,7 @@ export async function playSteps(
     setArray: (arr: number[]) => void,
     setActive: (indices: number[]) => void,
     setAction: (type: "compare" | "swap" | null) => void,
-    setMessage: (message: string | null) => void,
+    setMessage: (message: MessageKey) => void,
     setCountSteps: (countSteps: number) => void,
     setCountSwaps: (countSwaps: number) => void,
 ){

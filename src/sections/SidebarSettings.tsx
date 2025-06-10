@@ -58,7 +58,7 @@ type SidebarSettingsProps = {
             <SidebarSection title="ALGORITHMS">
                 <Dropdown<AlgorithmKey>
                     dropdownPositionClass="mt-2 top-full"
-                    values={['BUMBLE', 'INSERTION', 'SELECTION', 'QUICK']}
+                    values={['BUBBLE', 'INSERTION', 'SELECTION', 'QUICK']}
                     selectedValue={codeAlgorithm}
                     setSelectedValue={setCodeAlgorithm}
                 />

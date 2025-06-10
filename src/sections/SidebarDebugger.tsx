@@ -8,7 +8,7 @@ import IconJS from "../components/icons/languajes/IconJS";
 import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
 
-import type { AlgorithmKey, LanguageKey } from "../types";
+import type { AlgorithmKey, LanguageKey, MessageKey } from "../types";
 import SwitchOption from "../components/SwitchOption";
 
 type SidebarCodeProps = {
@@ -16,7 +16,7 @@ type SidebarCodeProps = {
   setCodeLanguage: (value: LanguageKey) => void;
 
   codeAlgorithm: AlgorithmKey;
-  message: string | null;
+  message: MessageKey | null;
 }
 
 function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: SidebarCodeProps) {
@@ -44,9 +44,9 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: S
 
                 <SidebarSection title="STEP BY STEP">
                 <div className="bg-BM-active rounded-lg border-1 border-BM-border">
-                    <p className="text-BM-subtext text-xs mx-3 my-2">{codeAlgorithm} SORT</p>
+                    <p className="text-BM-subtext text-xs mx-3 my-2">{(!message?.title) ? `${codeAlgorithm} SORT` : `${message?.title}`} </p>
                     <div className="bg-BM-sidebar px-3 py-3 text-BM-text text-sm rounded-lg">
-                        <p className="text-BM-text">{(!message) ? `(${codeAlgorithm} SORT) Waiting...` : `${message}`}</p>
+                        <p className="text-BM-text">{(!message?.description) ? `Waiting...` : `${message?.description}`}</p>
                     </div>
                 </div>
                 </SidebarSection>

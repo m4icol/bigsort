@@ -4,11 +4,11 @@
     worst: 'O(n²)'
   };
   
-  export const BUMBLE = {
+  export const BUBBLE = {
     JAVA: {
       code: `
-  public class BumbleSort {
-    public static void bumbleSort(int[] arr) {
+  public class BubbleSort {
+    public static void bubbleSort(int[] arr) {
       int n = arr.length;
       boolean swapped = true;
       while (swapped) {
@@ -31,7 +31,7 @@
   
     PYTHON: {
       code: `
-  def bumble_sort(arr):
+  def bubble_sort(arr):
       n = len(arr)
       swapped = True
       while swapped:
@@ -47,7 +47,7 @@
   
     JAVASCRIPT: {
       code: `
-  function bumbleSort(arr) {
+  function bubbleSort(arr) {
     let n = arr.length;
     let swapped = true;
     while (swapped) {

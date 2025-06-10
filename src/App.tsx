@@ -2,7 +2,7 @@ import { useState } from "react";
 import BigSort from "./sections/Bigsort";
 import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
-import type { AlgorithmKey, LanguageKey, SpeedKey } from "./types";
+import type { AlgorithmKey, LanguageKey, MessageKey, SpeedKey } from "./types";
 function App() {
   const [rangeValue, setRangeValue] = useState(10);
 
@@ -11,12 +11,12 @@ function App() {
     setRangeValue(randomValue);
   };
 
-  const [codeAlgorithm,setCodeAlgorithm] = useState<AlgorithmKey>("BUMBLE");
+  const [codeAlgorithm,setCodeAlgorithm] = useState<AlgorithmKey>("BUBBLE");
   const [codeLanguage, setCodeLanguage] = useState<LanguageKey>("JAVASCRIPT");
 
   const [algSpeed, setAlgSpeed] = useState<SpeedKey>("1.0x");
 
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState<MessageKey | null>(null);
 
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
