@@ -50,6 +50,9 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   const [activeIndices, setActiveIndices] = useState<number[]>([]);
   const [actionType, setActionType] = useState<"compare" | "swap" | null>(null);
 
+  const [countSteps, setCountSteps] = useState<number>(0);
+  const [countSwaps, setCountSwaps] = useState<number>(0);
+
   const speedMap: Record<SpeedKey, number> = {
     "0.5x": 1500,
     "1.0x": 900,
@@ -75,10 +78,14 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
       steps,
       currentList,
       delayMs,
+      countSteps,
+      countSwaps,
       setCurrentList,
       setActiveIndices,
       setActionType,
       setMessage,
+      setCountSteps,
+      setCountSwaps,
     );
     
   };
@@ -134,8 +141,8 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
         <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
           <StatItem value={bestCase} label="BEST CASE" />
           <StatItem value={worstCase} label="WORST CASE" />
-          <StatItem value="12" label="STEPS" />
-          <StatItem value="8" label="SWAPS" />
+          <StatItem value={countSteps} label="STEPS" />
+          <StatItem value={countSwaps} label="SWAPS" />
         </div>
       </div>
     </div>

@@ -7,14 +7,30 @@ html, body {
 @theme {
     --color-BM-background: #161616;
     --color-BM-sidebar: #242424;
-    --color-BM-bars-compare: #F4E4CB;
-    --color-BM-bars-swap: #CBD8F4;
     --color-BM-active: #3A3A3A;
     --color-BM-border: #7E7E7E;
     --color-BM-subtext: #bbbbbb;
     --text-color-BM-text: #ffffff;
     --text-color-BM-subtext: #bbbbbb;
     --font-display: "Poppins";
+}
+
+.bg-compare {
+  background-color: #f4e4cbc5;
+  transition: background-color 0.2s ease;
+  animation: jump-swap 0.4s ease;
+}
+
+.bg-swap {
+  background-color: #cbd8f4d5;
+  transition: background-color 0.2s ease;
+  animation: jump-swap 0.4s ease;
+}
+
+@keyframes jump-swap {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
 }
 
 @font-face {
