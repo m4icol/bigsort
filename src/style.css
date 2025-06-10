@@ -16,13 +16,13 @@ html, body {
 }
 
 .bg-compare {
-  background-color: #f4e4cbc5;
+  background-color: #eee9e4;
   transition: background-color 0.2s ease;
   animation: jump-swap 0.4s ease;
 }
 
 .bg-swap {
-  background-color: #cbd8f4d5;
+  background-color: #ddebde;
   transition: background-color 0.2s ease;
   animation: jump-swap 0.4s ease;
 }
