@@ -7,7 +7,7 @@ import LayoutBar from "../components/LayoutBar";
 import PanelItem, { StatItem } from "../components/Item";
 import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
-import type { AlgorithmKey, LanguageKey, MessageKey, SortStep, SpeedKey } from "../types";
+import type { AlgorithmKey, LanguageKey, MessageKey, OrderKey, SortStep, SpeedKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bubbleSteps";
 import { playSteps } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
@@ -20,9 +20,10 @@ type BigSortProps = {
   codeAlgorithm: AlgorithmKey;
   algSpeed: SpeedKey;
   setMessage: (message: MessageKey | null) => void;
+  algOrder: OrderKey;
 };
 
-function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, setMessage }: BigSortProps) {
+function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, setMessage, algOrder }: BigSortProps) {
   const [currentList, setCurrentList] = useState<number[]>([]);
 
   const createList = (items: number) => {
@@ -66,7 +67,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
     let steps: SortStep[] = [];
   
     if (codeAlgorithm === "BUBBLE") {
-      steps = getBubbleSortSteps(currentList);
+      steps = getBubbleSortSteps(currentList, algOrder);
     } else if (codeAlgorithm === "INSERTION") {
       steps = getInsertionSortSteps(currentList);
     } else if (codeAlgorithm === "SELECTION") {

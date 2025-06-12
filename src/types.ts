@@ -12,3 +12,5 @@ export interface SortStep {
   indices: number[];
   message?: MessageKey;
 }
+
+export type OrderKey = "ASCENDING" | "DESCENDING"
