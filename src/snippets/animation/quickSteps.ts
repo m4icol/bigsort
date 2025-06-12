@@ -1,6 +1,14 @@
-import type { SortStep } from "../../types";
+import type { OrderKey, SortStep } from "../../types";
 
-export function getQuickSortSteps(array: number[]): SortStep[] {
+export function getQuickSortSteps(array: number[], order: OrderKey): SortStep[] {
+
+  const isAscending = order === "ASCENDING";
+  const changeOrder = (a: number, b: number) => {
+    return isAscending ? a < b : a > b;
+  }
+
+  const orderText = isAscending ? "left" : "right";
+
   const steps: SortStep[] = [];
   const arr = [...array];
 
@@ -37,13 +45,13 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
 
       steps.push({ type: 'compare', indices: [j, end] });
 
-      if (arr[j] < pivot) {
+      if (changeOrder(arr[j], pivot)) {
         steps.push({ 
           type: 'message', 
           indices: [i, j], 
           message: {
             title: "SWAPPING",
-            description: `Moving ${arr[j]} (index ${j}) to left partition by swapping with ${arr[i]} (index ${i})`
+            description: `Moving ${arr[j]} (index ${j}) to ${orderText} partition by swapping with ${arr[i]} (index ${i})`
           }
         });
 
@@ -74,7 +82,7 @@ export function getQuickSortSteps(array: number[]): SortStep[] {
     indices: [], 
     message: {
       title: "SORTING COMPLETE",
-      description: `Final array: [${arr.join(', ')}]` 
+      description: `Final array in ${order.toLowerCase()} order: [${arr.join(", ")}]`
     }
   });
 

@@ -71,9 +71,9 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
     } else if (codeAlgorithm === "INSERTION") {
       steps = getInsertionSortSteps(currentList, algOrder);
     } else if (codeAlgorithm === "SELECTION") {
-      steps = getSelectionSortSteps(currentList);
+      steps = getSelectionSortSteps(currentList, algOrder);
     } else if (codeAlgorithm === "QUICK") {
-      steps = getQuickSortSteps(currentList);
+      steps = getQuickSortSteps(currentList, algOrder);
     }
     playSteps(
       steps,
