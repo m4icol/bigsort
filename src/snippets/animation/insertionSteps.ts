@@ -1,6 +1,15 @@
-import type { SortStep } from "../../types";
+import type { OrderKey, SortStep } from "../../types";
 
-export function getInsertionSortSteps(array: number[]): SortStep[] {
+export function getInsertionSortSteps(array: number[], order: OrderKey): SortStep[] {
+    
+    const isAscending = order === "ASCENDING";
+    const changeOrder = (a: number, b: number): boolean => {
+      return isAscending ? a > b : a < b;
+    }
+
+    const orderText = isAscending ? "left" : "right"
+    const orderSign = isAscending ? ">" : "<";
+  
     const steps: SortStep[] = [];
     const arr = [...array];
   
@@ -16,14 +25,14 @@ export function getInsertionSortSteps(array: number[]): SortStep[] {
       });
        
       let j = i;
-      while (j > 0 && arr[j - 1] > arr[j]) {
+      while (j > 0 && changeOrder(arr[j - 1], arr[j])) {
 
         steps.push({
           type: 'message',
           indices: [j - 1, j],
           message: {
             title: "INSERTING",
-            description: `${arr[j - 1]} > ${arr[j]} = true, shifting ${arr[j]} left to find its correct position`
+            description: `${arr[j - 1]} ${orderSign} ${arr[j]} = true, shifting ${arr[j]} ${orderText} to find its correct position`
           }
         });
 
@@ -52,7 +61,7 @@ export function getInsertionSortSteps(array: number[]): SortStep[] {
       indices: [],
       message: {
         title: "SORTING COMPLETE",
-        description: `Final array: [${arr.join(', ')}]` 
+        description: `Final array in ${order.toLowerCase()}: [${arr.join(', ')}]` 
       }
     });
   

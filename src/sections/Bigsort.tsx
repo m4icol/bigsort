@@ -69,7 +69,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
     if (codeAlgorithm === "BUBBLE") {
       steps = getBubbleSortSteps(currentList, algOrder);
     } else if (codeAlgorithm === "INSERTION") {
-      steps = getInsertionSortSteps(currentList);
+      steps = getInsertionSortSteps(currentList, algOrder);
     } else if (codeAlgorithm === "SELECTION") {
       steps = getSelectionSortSteps(currentList);
     } else if (codeAlgorithm === "QUICK") {
