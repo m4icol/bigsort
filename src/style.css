@@ -27,6 +27,25 @@ html, body {
   animation: jump-swap 0.4s ease;
 }
 
+.bg-complete {
+  background-color: #eee9e4;
+  transition: background-color 0.2s ease;
+  animation: jump-swap 0.4s ease;
+  animation: complete-animation 1.2s ease-in-out forwards;
+}
+
+@keyframes complete-animation {
+  0%, 10%   { background-color: #dde1eb; }
+  15%, 25%  { background-color: #242424; }
+  30%, 40%  { background-color: #dde1eb; }
+  45%, 55%  { background-color: #242424; }
+  60%, 70%  { background-color: #dde1eb; }
+  75%, 85%  { background-color: #242424; }
+  90%, 95%  { background-color: #dde1eb; }
+  100%      { background-color: #242424; }
+}
+
+
 @keyframes jump-swap {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-5px); }

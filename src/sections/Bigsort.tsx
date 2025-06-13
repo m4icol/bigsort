@@ -49,16 +49,16 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
   
   const [activeIndices, setActiveIndices] = useState<number[]>([]);
-  const [actionType, setActionType] = useState<"compare" | "swap" | null>(null);
+  const [actionType, setActionType] = useState<"compare" | "swap" | "complete" |null>(null);
 
   const [countSteps, setCountSteps] = useState<number>(0);
   const [countSwaps, setCountSwaps] = useState<number>(0);
 
   const speedMap: Record<SpeedKey, number> = {
     "0.5x": 1600,
-    "1.0x": 1000,
-    "1.5x": 700,
-    "2.0x": 500,
+    "1.0x": 900,
+    "1.5x": 650,
+    "2.0x": 400,
   };
   
   const delayMs = speedMap[algSpeed];

@@ -8,7 +8,7 @@ export type MessageKey = {
 }
 
 export interface SortStep {
-  type: 'compare' | 'swap' | 'message'
+  type: 'compare' | 'swap' | 'message' | 'complete'
   indices: number[];
   message?: MessageKey;
 }

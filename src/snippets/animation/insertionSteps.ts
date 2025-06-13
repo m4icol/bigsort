@@ -64,6 +64,11 @@ export function getInsertionSortSteps(array: number[], order: OrderKey): SortSte
         description: `Final array in ${order.toLowerCase()}: [${arr.join(', ')}]` 
       }
     });
+
+    steps.push({
+      type: 'complete',
+      indices: Array.from({ length: arr.length }, (_, i) => i),
+    })
   
     return steps;
 }

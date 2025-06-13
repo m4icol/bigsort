@@ -70,5 +70,10 @@ export function getBubbleSortSteps(array: number[], order: OrderKey = "ASCENDING
     }
   });
 
+  steps.push({
+    type: 'complete',
+    indices: Array.from({ length: arr.length }, (_, i) => i),
+  })
+
   return steps;
 }

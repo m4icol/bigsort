@@ -74,5 +74,10 @@ export function getSelectionSortSteps(array: number[], order: OrderKey): SortSte
     }
   });
 
+  steps.push({
+    type: 'complete',
+    indices: Array.from({ length: arr.length }, (_, i) => i),
+  })
+
   return steps;
 }

@@ -2,7 +2,7 @@ type LayoutBarProps = {
   level: number;
   index: number;
   isActive?: boolean;
-  actionType?: "compare" | "swap" | null;
+  actionType?: "compare" | "swap" | "complete" | null;
 };
 
 function LayoutBar({level = 1, index, isActive, actionType }: LayoutBarProps) {
@@ -11,6 +11,7 @@ function LayoutBar({level = 1, index, isActive, actionType }: LayoutBarProps) {
         if (!isActive) return "bg-BM-sidebar";
         if (actionType === "compare") return "bg-compare";
         if (actionType === "swap") return " bg-swap";
+        if (actionType === "complete") return "bg-complete";
         return "bg-BM-sidebar";
       };
 

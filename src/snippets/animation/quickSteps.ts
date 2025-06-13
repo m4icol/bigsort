@@ -86,5 +86,10 @@ export function getQuickSortSteps(array: number[], order: OrderKey): SortStep[] 
     }
   });
 
+  steps.push({
+    type: 'complete',
+    indices: Array.from({ length: arr.length }, (_, i) => i),
+  })
+
   return steps;
 }

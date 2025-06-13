@@ -8,7 +8,7 @@ export async function playSteps(
     countSwaps: number,
     setArray: (arr: number[]) => void,
     setActive: (indices: number[]) => void,
-    setAction: (type: "compare" | "swap" | null) => void,
+    setAction: (type: "compare" | "swap" | 'complete' |null) => void,
     setMessage: (message: MessageKey) => void,
     setCountSteps: (countSteps: number) => void,
     setCountSwaps: (countSwaps: number) => void,
