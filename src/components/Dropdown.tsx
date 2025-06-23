@@ -35,7 +35,7 @@ export default function Dropdown<T extends React.ReactNode>({
                 type="button">{selectedValue}
             
                 <svg
-                    className="w-2.5 h-2.5 ml-3"
+                    className="w-3 h-3 mr-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -45,7 +45,7 @@ export default function Dropdown<T extends React.ReactNode>({
                         stroke="currentColor"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="2"
+                        strokeWidth="1.5"
                         d="m1 1 4 4 4-4"
                     />
                 </svg>

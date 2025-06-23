@@ -27,7 +27,7 @@ function LayoutBar({level = 1, index, isActive, actionType }: LayoutBarProps) {
             <div 
                 className={`rounded-md border-1 w-full border-BM-border flex-shrink-0 flex items-end pb-1 pt-5.5 ${getBarColor()}`}
                 style={{ height: `${height}px` }}>
-                <p className="text-BM-border font-semibold text-xs text-center w-full">{level}</p>
+                <p className="text-BM-subtext font-semibold text-xs text-center w-full">{level}</p>
             </div>
 
             <p className="text-BM-subtext text-sm text-center w-full">{index}</p>
