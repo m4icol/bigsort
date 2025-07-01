@@ -7,6 +7,21 @@ export type MessageKey = {
   description: string;
 }
 
+export type SidebarSettingsProps = {
+    rangeValue: number;
+    setRangeValue: (value: number) => void;
+    randomNumberItems: () => void;
+
+    codeAlgorithm: AlgorithmKey;
+    setCodeAlgorithm: (value: AlgorithmKey) => void;
+
+    algSpeed: SpeedKey;
+    setAlgSpeed: (value: SpeedKey) => void;
+
+    algOrder: OrderKey;
+    setAlgOrder: (value: OrderKey) => void;
+  };
+
 export interface SortStep {
   type: 'compare' | 'swap' | 'message' | 'complete'
   indices: number[];

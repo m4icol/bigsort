@@ -7,23 +7,8 @@ import SunIcon from "../components/icons/general/IconSun";
 import MoonIcon from "../components/icons/general/IconMoon";
 import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
-import type { AlgorithmKey, OrderKey, SpeedKey } from "../types";
+import type { AlgorithmKey, OrderKey, SidebarSettingsProps, SpeedKey } from "../types";
 import { useState } from "react";
-
-type SidebarSettingsProps = {
-    rangeValue: number;
-    setRangeValue: (value: number) => void;
-    randomNumberItems: () => void;
-
-    codeAlgorithm: AlgorithmKey;
-    setCodeAlgorithm: (value: AlgorithmKey) => void;
-
-    algSpeed: SpeedKey;
-    setAlgSpeed: (value: SpeedKey) => void;
-
-    algOrder: OrderKey;
-    setAlgOrder: (value: OrderKey) => void;
-  };
 
   function SidebarSettings({
     rangeValue,
@@ -40,7 +25,7 @@ type SidebarSettingsProps = {
     setAlgOrder,
   }: SidebarSettingsProps) {
 
-    const [tempLayout, setTempLayout] = useState("BARRS");
+    // const [tempLayout, setTempLayout] = useState("BARRS");
     const [tempTheme, setTempTheme] = useState("DARK_MODE");
 
     const themeIcons = {
@@ -95,14 +80,14 @@ type SidebarSettingsProps = {
                 />
             </SidebarSection>
 
-            <SidebarSection title="LAYOUT">
+            {/* <SidebarSection title="LAYOUT">
                 <SwitchOption<string>
                     selectedValue={tempLayout}
                     setSelectedValue={setTempLayout}
                     options={["BARRS", "CELLS"]}
                     values={["BARRS", "CELLS"]}
                 />
-            </SidebarSection>
+            </SidebarSection> */}
 
         </div>
 
