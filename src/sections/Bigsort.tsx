@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import IconBack from "../components/icons/controls/IconBack";
-import IconNext from "../components/icons/controls/IconNext";
 import IconRetry from "../components/icons/controls/IconRetry";
 import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
@@ -73,10 +71,10 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   };
 
   const speedMap: Record<SpeedKey, number> = {
-    "0.5x": 1600,
-    "1.0x": 900,
-    "1.5x": 650,
-    "2.0x": 400,
+    "0.5x": 1400,
+    "1.0x": 700,
+    "1.5x": 550,
+    "2.0x": 300,
   };
 
   const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
@@ -156,33 +154,22 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
 
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4 px-5">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-6 px-5">
           <SortingList handleCreateList={handleCreateList} currentList={currentList} />
 
-          <div className="flex flex-row gap-3 h-9 w-90 justify-center">
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconBack />
-            </PanelItem>
-
-            <PanelItem 
-              onClick={handleRun} 
-              className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"
-            >
+          <div className="flex flex-row h-full gap-4 lg:border-l-2 border-BM-border pl-6">
+            <PanelItem onClick={handleRun} title="Run / Pause Animation"
+              className="cursor-pointer px-6 py-2.5 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               {isAnimating ? <IconPause /> : <IconRun />}
             </PanelItem>
-
-            <PanelItem 
-              onClick={handleReset}
-              className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"
-            >
-              <IconRetry />
-            </PanelItem>
             
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconNext />
+            <PanelItem onClick={handleReset} title="Reset Animation"
+              className="cursor-pointer px-6 py-2.5 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
+              <IconRetry />
             </PanelItem>
           </div>
         </div>
+
       </div>
 
       <Stats bestCase={bestCase} worstCase={worstCase} countSteps={countSteps} countSwaps={countSwaps} />
