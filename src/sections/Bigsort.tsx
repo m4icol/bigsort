@@ -130,7 +130,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   }
   
   return (
-    <div className="flex flex-col lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
+    <div className="flex flex-col md:px-50 lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
       
       <div className="flex gap-10 lg:gap-2 flex-col justify-center items-center w-full lg:w-[24rem]">
         <h1 className="text-2xl lg:text-3xl font-bold">BIG S(O)RT</h1>
@@ -157,7 +157,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
         <div className="flex flex-col lg:flex-row justify-center items-center gap-6 px-5">
           <SortingList handleCreateList={handleCreateList} currentList={currentList} />
 
-          <div className="flex flex-row h-full gap-4 lg:border-l-2 border-BM-border pl-6">
+          <div className="flex flex-row h-full gap-4 lg:border-l-1 border-BM-border pl-6">
             <PanelItem onClick={handleRun} title="Run / Pause Animation"
               className="cursor-pointer px-6 py-2.5 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               {isAnimating ? <IconPause /> : <IconRun />}
