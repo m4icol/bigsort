@@ -1,25 +1,17 @@
 import CodeField from "../components/CodeField";
 import Sidebar from "../components/Sidebar";
 import SidebarSection from "../components/SidebarSection";
-
 import IconDebugger from "../components/icons/general/IconDebugger";
 import IconGithub from "../components/icons/general/IconGithub";
-import IconJS from "../components/icons/languajes/IconJS";
-import IconJava from "../components/icons/languajes/IconJava";
-import IconPython from "../components/icons/languajes/IconPython";
-
 import type { AlgorithmKey, LanguageKey, MessageKey } from "../types";
-import SwitchOption from "../components/SwitchOption";
 
 type SidebarCodeProps = {
   codeLanguage: LanguageKey,
-  setCodeLanguage: (value: LanguageKey) => void;
-
   codeAlgorithm: AlgorithmKey;
   message: MessageKey | null;
 }
 
-function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: SidebarCodeProps) {
+function SidebarCode({ codeLanguage, codeAlgorithm, message}: SidebarCodeProps) {
     return (
         <Sidebar
             title="DEBUGGER"
@@ -29,14 +21,6 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: S
             rounded="rounded-bl-2xl lg:rounded-2xl"
         >   
             <div className="flex flex-col gap-6 mb-5">
-                <SidebarSection title="VISUAL MODE">
-                    <SwitchOption<LanguageKey>
-                        selectedValue={codeLanguage}
-                        setSelectedValue={setCodeLanguage}
-                        options={[<IconJS />, <IconJava />, <IconPython />]}
-                        values={['JAVASCRIPT', 'JAVA', 'PYTHON']}
-                    />
-                </SidebarSection>
 
                 <SidebarSection title="CODE">
                     <CodeField codeAlgorithm={codeAlgorithm} codeLanguage={codeLanguage} />
@@ -44,9 +28,9 @@ function SidebarCode({ codeLanguage, setCodeLanguage, codeAlgorithm, message}: S
 
                 <SidebarSection title="STEP BY STEP">
                 <div className="bg-BM-active rounded-lg border-1 border-BM-border">
-                    <p className="text-BM-subtext text-xs mx-3 my-2.5">{(!message?.title) ? `${codeAlgorithm} SORT` : `${message?.title}`} </p>
+                    <p className="text-BM-subtext text-xs mx-3 my-2.5">{(!message?.title) ? `${codeAlgorithm} SORT | READY TO START` : `${message?.title}`} </p>
                     <div className="bg-BM-sidebar px-3 py-3 text-xs rounded-lg">
-                        <p className="text-BM-text">{(!message?.description) ? `...` : `${message?.description}`}</p>
+                        <p className="text-BM-text">{(!message?.description) ? "Press the run buttom to begin sorting." : `${message?.description}`}</p>
                     </div>
                 </div>
                 </SidebarSection>

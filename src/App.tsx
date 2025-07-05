@@ -35,6 +35,9 @@ function App() {
 
         algOrder={algOrder}
         setAlgOrder={setAlgOrder}
+
+        codeLanguage={codeLanguage} 
+        setCodeLanguage={setCodeLanguage} 
       />
 
       <BigSort 
@@ -48,7 +51,6 @@ function App() {
 
       <SidebarCode 
         codeLanguage={codeLanguage} 
-        setCodeLanguage={setCodeLanguage} 
         codeAlgorithm={codeAlgorithm}
         message={message}
       />

@@ -4,7 +4,7 @@ import IconNext from "../components/icons/controls/IconNext";
 import IconRetry from "../components/icons/controls/IconRetry";
 import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
-import PanelItem, { StatItem } from "../components/Item";
+import PanelItem from "../components/Item";
 import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey, MessageKey, OrderKey, SortStep, SpeedKey } from "../types";
@@ -13,6 +13,7 @@ import { playSteps } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
 import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
 import { getQuickSortSteps } from "../snippets/animation/quickSteps";
+import Stats from "./sub_sections/Stats";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -65,16 +66,12 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   
   const handleRun = () => {
     let steps: SortStep[] = [];
-  
-    if (codeAlgorithm === "BUBBLE") {
-      steps = getBubbleSortSteps(currentList, algOrder);
-    } else if (codeAlgorithm === "INSERTION") {
-      steps = getInsertionSortSteps(currentList, algOrder);
-    } else if (codeAlgorithm === "SELECTION") {
-      steps = getSelectionSortSteps(currentList, algOrder);
-    } else if (codeAlgorithm === "QUICK") {
-      steps = getQuickSortSteps(currentList, algOrder);
-    }
+
+    if (codeAlgorithm === "BUBBLE") steps = getBubbleSortSteps(currentList, algOrder);
+    else if (codeAlgorithm === "INSERTION") steps = getInsertionSortSteps(currentList, algOrder);
+    else if (codeAlgorithm === "SELECTION") steps = getSelectionSortSteps(currentList, algOrder);
+    else if (codeAlgorithm === "QUICK")     steps = getQuickSortSteps(currentList, algOrder);
+
     playSteps(
       steps,
       currentList,
@@ -137,15 +134,8 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 w-full justify-center items-center">
-        <p className="font-semibold text-center">COMPLEXITY AND STATS</p>
-        <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
-          <StatItem value={bestCase} label="BEST CASE" />
-          <StatItem value={worstCase} label="WORST CASE" />
-          <StatItem value={countSteps} label="STEPS" />
-          <StatItem value={countSwaps} label="SWAPS" />
-        </div>
-      </div>
+      <Stats bestCase={bestCase} worstCase={worstCase} countSteps={countSteps} countSwaps={countSwaps} />
+
     </div>
   );
 }
