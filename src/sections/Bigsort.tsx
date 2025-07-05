@@ -9,11 +9,12 @@ import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey, MessageKey, OrderKey, SortStep, SpeedKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bubbleSteps";
-import { playSteps } from "../snippets/animation/playSteps";
+import { inCurrentlyAnimating, playSteps, stopAnimation } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
 import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
 import { getQuickSortSteps } from "../snippets/animation/quickSteps";
 import Stats from "./sub_sections/Stats";
+import IconPause from "../components/icons/controls/IconPause";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -26,7 +27,16 @@ type BigSortProps = {
 
 function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, setMessage, algOrder }: BigSortProps) {
   const [currentList, setCurrentList] = useState<number[]>([]);
+  const [originalList, setOriginalList] = useState<number[]>([]);
 
+  const [activeIndices, setActiveIndices] = useState<number[]>([]);
+  const [actionType, setActionType] = useState<"compare" | "swap" | "complete" |null>(null);
+
+  const [countSteps, setCountSteps] = useState<number>(0);
+  const [countSwaps, setCountSwaps] = useState<number>(0);
+
+  const [isAnimating, setIsAnimating] = useState(false);
+  
   const createList = (items: number) => {
     const newList = [];
     for (let i = 0; i < items; i++) {
@@ -39,21 +49,28 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   useEffect(() => {
     const newList = createList(randomNumberItems);
     setCurrentList(newList);
+    setOriginalList([...newList]);
+
+    if (inCurrentlyAnimating()) {
+      stopAnimation();
+      setIsAnimating(false);
+    }
+
   }, [randomNumberItems]);
 
   const handleCreateList = () => {
     const newList = createList(randomNumberItems);
     setCurrentList(newList);
+    setOriginalList([...newList]);
+
+    if (inCurrentlyAnimating()) {
+      stopAnimation();
+      setIsAnimating(false);
+    }
+
+    setCountSteps(0);
+    setCountSwaps(0);
   };
-
-  const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
-  const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
-  
-  const [activeIndices, setActiveIndices] = useState<number[]>([]);
-  const [actionType, setActionType] = useState<"compare" | "swap" | "complete" |null>(null);
-
-  const [countSteps, setCountSteps] = useState<number>(0);
-  const [countSwaps, setCountSwaps] = useState<number>(0);
 
   const speedMap: Record<SpeedKey, number> = {
     "0.5x": 1600,
@@ -61,12 +78,24 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
     "1.5x": 650,
     "2.0x": 400,
   };
-  
+
+  const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
+  const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
   const delayMs = speedMap[algSpeed];
   
   const handleRun = () => {
-    let steps: SortStep[] = [];
 
+    if(isAnimating){
+      stopAnimation();
+      setIsAnimating(false);
+      setActiveIndices([]);
+      setActionType(null);
+      return;
+    }
+
+    setIsAnimating(true);
+
+    let steps: SortStep[] = [];
     if (codeAlgorithm === "BUBBLE") steps = getBubbleSortSteps(currentList, algOrder);
     else if (codeAlgorithm === "INSERTION") steps = getInsertionSortSteps(currentList, algOrder);
     else if (codeAlgorithm === "SELECTION") steps = getSelectionSortSteps(currentList, algOrder);
@@ -84,10 +113,23 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
       setMessage,
       setCountSteps,
       setCountSwaps,
+      () => setIsAnimating(false)
     );
-    
   };
 
+  const handleReset = () =>{
+    if (inCurrentlyAnimating()) {
+      stopAnimation();
+    }
+
+    setCurrentList([...originalList]);
+    setActiveIndices([]);
+    setActionType(null);
+    setCountSteps(0);
+    setCountSwaps(0);
+    setIsAnimating(false);
+    setMessage(null);
+  }
   
   return (
     <div className="flex flex-col lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
@@ -121,12 +163,21 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconBack />
             </PanelItem>
-            <PanelItem onClick={handleRun} className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconRun />
+
+            <PanelItem 
+              onClick={handleRun} 
+              className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"
+            >
+              {isAnimating ? <IconPause /> : <IconRun />}
             </PanelItem>
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
+
+            <PanelItem 
+              onClick={handleReset}
+              className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar"
+            >
               <IconRetry />
             </PanelItem>
+            
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconNext />
             </PanelItem>
