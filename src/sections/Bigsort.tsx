@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import IconRetry from "../components/icons/controls/IconRetry";
-import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
-import PanelItem from "../components/Item";
-import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey, MessageKey, OrderKey, SortStep, SpeedKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bubbleSteps";
@@ -12,7 +8,7 @@ import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
 import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
 import { getQuickSortSteps } from "../snippets/animation/quickSteps";
 import Stats from "./sub_sections/Stats";
-import IconPause from "../components/icons/controls/IconPause";
+import Controls from "./sub_sections/Controls";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -154,24 +150,10 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
 
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-6 px-5">
-          <SortingList handleCreateList={handleCreateList} currentList={currentList} />
-
-          <div className="flex flex-row h-full gap-4 lg:border-l-1 border-BM-border pl-6">
-            <PanelItem onClick={handleRun} title="Run / Pause Animation"
-              className="cursor-pointer px-6 py-2.5 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              {isAnimating ? <IconPause /> : <IconRun />}
-            </PanelItem>
-            
-            <PanelItem onClick={handleReset} title="Reset Animation"
-              className="cursor-pointer px-6 py-2.5 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconRetry />
-            </PanelItem>
-          </div>
-        </div>
+        <Controls currentList={currentList} isAnimating={isAnimating} handleCreateList={handleCreateList} handleRun={handleRun} handleReset={handleReset}></Controls>
 
       </div>
-
+    
       <Stats bestCase={bestCase} worstCase={worstCase} countSteps={countSteps} countSwaps={countSwaps} />
 
     </div>
