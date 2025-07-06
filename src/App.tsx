@@ -28,14 +28,12 @@ function App() {
     localStorage.setItem("theme", newTheme);
   };
 
-  useEffect( ()=> {
-    const storageTheme = localStorage.getItem("theme") || "light";
+  useEffect(() => {
+    const storageTheme = localStorage.getItem("theme") || "dark";
     setTheme(storageTheme);
-    document.documentElement.classList.toggle(
-      "dark",
-      storageTheme === "dark"
-    )
-  }, [])
+    document.documentElement.classList.toggle("dark", storageTheme === "dark");
+  }, []);
+
 
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-WM-background dark:bg-BM-background h-screen w-screen text-WM-text dark:text-BM-text font-display">
