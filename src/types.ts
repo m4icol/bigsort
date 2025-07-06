@@ -29,3 +29,5 @@ export interface SortStep {
 }
 
 export type OrderKey = "ASCENDING" | "DESCENDING"
+
+export type AnimationState = "IDLE" | "RUNNING" | "PAUSED" | "COMPLETED";

@@ -13,6 +13,7 @@ import { playSteps } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
 import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
 import { getQuickSortSteps } from "../snippets/animation/quickSteps";
+import IconPause from "../components/icons/controls/IconPause";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -44,6 +45,11 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
     const newList = createList(randomNumberItems);
     setCurrentList(newList);
   };
+
+  const [isPaused, setIsPaused] = useState(true);
+  const handleIsPaused = () => {
+    setIsPaused(value => !value);
+  }
 
   const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
   const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
@@ -124,10 +130,11 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
               <IconBack />
             </PanelItem>
-            <PanelItem onClick={handleRun} className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconRun />
+            <PanelItem onClick={handleIsPaused} className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
+              {isPaused ? <IconRun/> : <IconPause/>}
             </PanelItem>
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
+            <PanelItem className={`${isPaused ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}  px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar`}>
+              
               <IconRetry />
             </PanelItem>
             <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
