@@ -153,7 +153,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
         <Controls currentList={currentList} isAnimating={isAnimating} handleCreateList={handleCreateList} handleRun={handleRun} handleReset={handleReset}></Controls>
 
       </div>
-    
+      
       <Stats bestCase={bestCase} worstCase={worstCase} countSteps={countSteps} countSwaps={countSwaps} />
 
     </div>

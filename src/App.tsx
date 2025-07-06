@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BigSort from "./sections/Bigsort";
 import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
@@ -20,6 +20,23 @@ function App() {
 
   const [algOrder, setAlgOrder] = useState<OrderKey>("ASCENDING");
 
+  const [theme, setTheme] = useState("dark");
+
+  const handleThemeChange = (newTheme: string) => {
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+  };
+
+  useEffect( ()=> {
+    const storageTheme = localStorage.getItem("theme") || "light";
+    setTheme(storageTheme);
+    document.documentElement.classList.toggle(
+      "dark",
+      storageTheme === "dark"
+    )
+  }, [])
+
   return (
     <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
       <SidebarSettings         
@@ -38,6 +55,9 @@ function App() {
 
         codeLanguage={codeLanguage} 
         setCodeLanguage={setCodeLanguage} 
+
+        theme={theme}
+        handleThemeChange={handleThemeChange}
       />
 
       <BigSort 

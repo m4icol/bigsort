@@ -3,8 +3,6 @@ import Dropdown from "../components/Dropdown";
 import Sidebar from "../components/Sidebar";
 import Range from "../components/Range";
 import SwitchOption from "../components/SwitchOption";
-import SunIcon from "../components/icons/general/IconSun";
-import MoonIcon from "../components/icons/general/IconMoon";
 import SidebarSection from "../components/SidebarSection";
 import ButtonRandom from "../components/ButtonRandom";
 import type { AlgorithmKey, LanguageKey, OrderKey, SpeedKey } from "../types";
@@ -12,6 +10,8 @@ import { useState } from "react";
 import IconJS from "../components/icons/languajes/IconJS";
 import IconJava from "../components/icons/languajes/IconJava";
 import IconPython from "../components/icons/languajes/IconPython";
+import SunIcon from "../components/icons/general/IconSun";
+import MoonIcon from "../components/icons/general/IconMoon";
 
 type SidebarSettingsProps = {
     rangeValue: number;
@@ -27,8 +27,11 @@ type SidebarSettingsProps = {
     algOrder: OrderKey;
     setAlgOrder: (value: OrderKey) => void;
 
-    codeLanguage: LanguageKey,
+    codeLanguage: LanguageKey;
     setCodeLanguage: (value: LanguageKey) => void;
+
+    theme: string;
+    handleThemeChange: (value: string) => void;
 };
 
 function SidebarSettings({
@@ -47,16 +50,17 @@ function SidebarSettings({
 
     codeLanguage,
     setCodeLanguage,
+
+    theme,
+    handleThemeChange,
   }: SidebarSettingsProps) {
 
-    const [tempTheme, setTempTheme] = useState("DARK_MODE");
+    const [selectedLanguage, setSelectedLanguage] = useState("ENGLISH");
 
     const themeIcons = {
-        LIGHT_MODE: <SunIcon />,
-        DARK_MODE: <MoonIcon />
+      light: <SunIcon />,
+      dark: <MoonIcon />
     };
-
-    const [selectedLanguage, setSelectedLanguage] = useState("ENGLISH");
     
     return (
         <Sidebar
@@ -117,10 +121,10 @@ function SidebarSettings({
 
                 <SidebarSection title="VISUAL MODE">
                     <SwitchOption<string>
-                        selectedValue={tempTheme}
-                        setSelectedValue={setTempTheme}
-                        options={[themeIcons.LIGHT_MODE, themeIcons.DARK_MODE]}
-                        values={["LIGHT_MODE", "DARK_MODE"]}
+                        selectedValue={theme}
+                        setSelectedValue={handleThemeChange}
+                        options={[themeIcons.light, themeIcons.dark]}
+                        values={["light", "dark"]}
                     />
                 </SidebarSection>
 
