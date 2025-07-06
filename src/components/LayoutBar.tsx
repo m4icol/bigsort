@@ -9,8 +9,8 @@ function LayoutBar({level = 1, index, isActive, actionType }: LayoutBarProps) {
 
     const getBarColor = () => {
         if (!isActive) return "bg-WM-sidebar dark:bg-BM-sidebar";
-        if (actionType === "compare") return "bg-compare";
-        if (actionType === "swap") return " bg-swap";
+        if (actionType === "compare") return "bg-compare bg-WM-compare dark:bg-BM-compare";
+        if (actionType === "swap") return "bg-swap bg-WM-swap dark:bg-BM-swap";
         if (actionType === "complete") return "bg-complete";
         return "bg-WM-sidebar dark:bg-BM-sidebar";
       };
