@@ -7,7 +7,7 @@ function App() {
   const [rangeValue, setRangeValue] = useState(10);
 
   const generateRandomValue = () => {
-    const randomValue = Math.floor(Math.random() * 16) + 5;
+    const randomValue = Math.floor(Math.random() * 11) + 5;
     setRangeValue(randomValue);
   };
 
