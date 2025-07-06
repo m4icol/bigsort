@@ -20,7 +20,7 @@ export default function SwitchOption<T>({
   };
 
   return (
-    <div className="border-1 rounded-lg border-BM-border px-1.5 py-1.5 flex flex-row justify-between text-sm gap-1">
+    <div className="border-1 rounded-lg border-WM-border dark:border-BM-border px-1.5 py-1.5 flex flex-row justify-between text-sm gap-1">
       {options.map((option, index) => {
         const value = values[index];
         const isSelected = value === selectedValue;
@@ -32,8 +32,8 @@ export default function SwitchOption<T>({
             onClick={() => handleSelected(value)}
             className={`py-1.5 rounded-md w-full flex justify-center items-center transition-colors ${
               isSelected
-                ? 'text-BM-text bg-BM-active'
-                : 'text-BM-subtext cursor-pointer hover:bg-BM-active'
+                ? 'text-WM-text bg-WM-active dark:text-BM-text dark:bg-BM-active'
+                : 'text-WM-subtext hover:bg-WM-active dark:text-BM-subtext dark:hover:bg-BM-active cursor-pointer'
             }`}
           >
             {option}

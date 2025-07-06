@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BigSort from "./sections/Bigsort";
 import SidebarCode from "./sections/SidebarDebugger";
 import SidebarSettings from "./sections/SidebarSettings";
@@ -7,7 +7,7 @@ function App() {
   const [rangeValue, setRangeValue] = useState(10);
 
   const generateRandomValue = () => {
-    const randomValue = Math.floor(Math.random() * 16) + 5;
+    const randomValue = Math.floor(Math.random() * 11) + 5;
     setRangeValue(randomValue);
   };
 
@@ -20,8 +20,23 @@ function App() {
 
   const [algOrder, setAlgOrder] = useState<OrderKey>("ASCENDING");
 
+  const [theme, setTheme] = useState("dark");
+
+  const handleThemeChange = (newTheme: string) => {
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+  };
+
+  useEffect(() => {
+    const storageTheme = localStorage.getItem("theme") || "dark";
+    setTheme(storageTheme);
+    document.documentElement.classList.toggle("dark", storageTheme === "dark");
+  }, []);
+
+
   return (
-    <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-BM-background h-screen w-screen text-BM-text font-display">
+    <div className="flex overflow-y-scroll scroll-bar-custom flex-row justify-between bg-WM-background dark:bg-BM-background h-screen w-screen text-WM-text dark:text-BM-text font-display">
       <SidebarSettings         
         rangeValue={rangeValue}
         setRangeValue={setRangeValue}
@@ -35,6 +50,12 @@ function App() {
 
         algOrder={algOrder}
         setAlgOrder={setAlgOrder}
+
+        codeLanguage={codeLanguage} 
+        setCodeLanguage={setCodeLanguage} 
+
+        theme={theme}
+        handleThemeChange={handleThemeChange}
       />
 
       <BigSort 
@@ -48,7 +69,6 @@ function App() {
 
       <SidebarCode 
         codeLanguage={codeLanguage} 
-        setCodeLanguage={setCodeLanguage} 
         codeAlgorithm={codeAlgorithm}
         message={message}
       />

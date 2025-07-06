@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
-import IconBack from "../components/icons/controls/IconBack";
-import IconNext from "../components/icons/controls/IconNext";
-import IconRetry from "../components/icons/controls/IconRetry";
-import IconRun from "../components/icons/controls/IconRun";
 import LayoutBar from "../components/LayoutBar";
-import PanelItem, { StatItem } from "../components/Item";
-import SortingList from "../components/SortingList";
 import { snippets } from "../snippets/debugger";
 import type { AlgorithmKey, LanguageKey, MessageKey, OrderKey, SortStep, SpeedKey } from "../types";
 import { getBubbleSortSteps } from "../snippets/animation/bubbleSteps";
-import { playSteps } from "../snippets/animation/playSteps";
+import { inCurrentlyAnimating, playSteps, stopAnimation } from "../snippets/animation/playSteps";
 import { getInsertionSortSteps } from "../snippets/animation/insertionSteps";
 import { getSelectionSortSteps } from "../snippets/animation/selectionSteps";
 import { getQuickSortSteps } from "../snippets/animation/quickSteps";
-import IconPause from "../components/icons/controls/IconPause";
+import Stats from "./sub_sections/Stats";
+import Controls from "./sub_sections/Controls";
 
 type BigSortProps = {
   randomNumberItems: number;
@@ -26,7 +21,16 @@ type BigSortProps = {
 
 function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, setMessage, algOrder }: BigSortProps) {
   const [currentList, setCurrentList] = useState<number[]>([]);
+  const [originalList, setOriginalList] = useState<number[]>([]);
 
+  const [activeIndices, setActiveIndices] = useState<number[]>([]);
+  const [actionType, setActionType] = useState<"compare" | "swap" | "complete" |null>(null);
+
+  const [countSteps, setCountSteps] = useState<number>(0);
+  const [countSwaps, setCountSwaps] = useState<number>(0);
+
+  const [isAnimating, setIsAnimating] = useState(false);
+  
   const createList = (items: number) => {
     const newList = [];
     for (let i = 0; i < items; i++) {
@@ -39,48 +43,58 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
   useEffect(() => {
     const newList = createList(randomNumberItems);
     setCurrentList(newList);
+    setOriginalList([...newList]);
+
+    if (inCurrentlyAnimating()) {
+      stopAnimation();
+      setIsAnimating(false);
+    }
+
   }, [randomNumberItems]);
 
   const handleCreateList = () => {
     const newList = createList(randomNumberItems);
     setCurrentList(newList);
+    setOriginalList([...newList]);
+
+    if (inCurrentlyAnimating()) {
+      stopAnimation();
+      setIsAnimating(false);
+    }
+
+    setCountSteps(0);
+    setCountSwaps(0);
   };
 
-  const [isPaused, setIsPaused] = useState(true);
-  const handleIsPaused = () => {
-    setIsPaused(value => !value);
-  }
+  const speedMap: Record<SpeedKey, number> = {
+    "0.5x": 1400,
+    "1.0x": 700,
+    "1.5x": 550,
+    "2.0x": 300,
+  };
 
   const worstCase = snippets[codeAlgorithm][codeLanguage].complexity.worst;
   const bestCase = snippets[codeAlgorithm][codeLanguage].complexity.best;
-  
-  const [activeIndices, setActiveIndices] = useState<number[]>([]);
-  const [actionType, setActionType] = useState<"compare" | "swap" | "complete" |null>(null);
-
-  const [countSteps, setCountSteps] = useState<number>(0);
-  const [countSwaps, setCountSwaps] = useState<number>(0);
-
-  const speedMap: Record<SpeedKey, number> = {
-    "0.5x": 1600,
-    "1.0x": 900,
-    "1.5x": 650,
-    "2.0x": 400,
-  };
-  
   const delayMs = speedMap[algSpeed];
   
   const handleRun = () => {
-    let steps: SortStep[] = [];
-  
-    if (codeAlgorithm === "BUBBLE") {
-      steps = getBubbleSortSteps(currentList, algOrder);
-    } else if (codeAlgorithm === "INSERTION") {
-      steps = getInsertionSortSteps(currentList, algOrder);
-    } else if (codeAlgorithm === "SELECTION") {
-      steps = getSelectionSortSteps(currentList, algOrder);
-    } else if (codeAlgorithm === "QUICK") {
-      steps = getQuickSortSteps(currentList, algOrder);
+
+    if(isAnimating){
+      stopAnimation();
+      setIsAnimating(false);
+      setActiveIndices([]);
+      setActionType(null);
+      return;
     }
+
+    setIsAnimating(true);
+
+    let steps: SortStep[] = [];
+    if (codeAlgorithm === "BUBBLE") steps = getBubbleSortSteps(currentList, algOrder);
+    else if (codeAlgorithm === "INSERTION") steps = getInsertionSortSteps(currentList, algOrder);
+    else if (codeAlgorithm === "SELECTION") steps = getSelectionSortSteps(currentList, algOrder);
+    else if (codeAlgorithm === "QUICK")     steps = getQuickSortSteps(currentList, algOrder);
+
     playSteps(
       steps,
       currentList,
@@ -93,17 +107,30 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
       setMessage,
       setCountSteps,
       setCountSwaps,
+      () => setIsAnimating(false)
     );
-    
   };
 
+  const handleReset = () =>{
+    if (inCurrentlyAnimating()) {
+      stopAnimation();
+    }
+
+    setCurrentList([...originalList]);
+    setActiveIndices([]);
+    setActionType(null);
+    setCountSteps(0);
+    setCountSwaps(0);
+    setIsAnimating(false);
+    setMessage(null);
+  }
   
   return (
-    <div className="flex flex-col lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
+    <div className="flex flex-col md:px-50 lg:items-center gap-13 py-6 lg:py-20 flex-auto overflow-y-scroll scroll-bar-custom w-full">
       
       <div className="flex gap-10 lg:gap-2 flex-col justify-center items-center w-full lg:w-[24rem]">
         <h1 className="text-2xl lg:text-3xl font-bold">BIG S(O)RT</h1>
-        <p className="text-xs text-BM-subtext text-center px-8 lg:px-0">
+        <p className="text-xs text-WM-subtext dark:text-BM-subtext text-center px-8 lg:px-0">
           Interactive tool to explore how sorting algorithms work, with live visuals, controls, speed and code in multiple languages.
         </p>
       </div>
@@ -123,36 +150,12 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
 
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4 px-5">
-          <SortingList handleCreateList={handleCreateList} currentList={currentList} />
+        <Controls currentList={currentList} isAnimating={isAnimating} handleCreateList={handleCreateList} handleRun={handleRun} handleReset={handleReset}></Controls>
 
-          <div className="flex flex-row gap-3 h-9 w-90 justify-center">
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconBack />
-            </PanelItem>
-            <PanelItem onClick={handleIsPaused} className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              {isPaused ? <IconRun/> : <IconPause/>}
-            </PanelItem>
-            <PanelItem className={`${isPaused ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}  px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar`}>
-              
-              <IconRetry />
-            </PanelItem>
-            <PanelItem className="cursor-pointer px-6 text-BM-subtext hover:text-BM-text hover:border-BM-subtext bg-BM-sidebar">
-              <IconNext />
-            </PanelItem>
-          </div>
-        </div>
       </div>
+      
+      <Stats bestCase={bestCase} worstCase={worstCase} countSteps={countSteps} countSwaps={countSwaps} />
 
-      <div className="flex flex-col gap-5 w-full justify-center items-center">
-        <p className="font-semibold text-center">COMPLEXITY AND STATS</p>
-        <div className="flex flex-col lg:flex-row gap-3 w-1/2 lg:w-auto">
-          <StatItem value={bestCase} label="BEST CASE" />
-          <StatItem value={worstCase} label="WORST CASE" />
-          <StatItem value={countSteps} label="STEPS" />
-          <StatItem value={countSwaps} label="SWAPS" />
-        </div>
-      </div>
     </div>
   );
 }

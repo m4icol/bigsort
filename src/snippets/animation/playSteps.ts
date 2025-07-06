@@ -1,5 +1,8 @@
 import type { MessageKey, SortStep } from "../../types";
 
+let isAnimating = false;
+let animationId: number = 0;
+
 export async function playSteps(
     steps: SortStep[],
     arr: number[],
@@ -12,37 +15,70 @@ export async function playSteps(
     setMessage: (message: MessageKey) => void,
     setCountSteps: (countSteps: number) => void,
     setCountSwaps: (countSwaps: number) => void,
+    onFinish?: () => void
 ){
-    for (const step of steps) {
 
-        const {type, indices, message} = step;
+    if (isAnimating) return;
+    isAnimating = true;
+    const currentAnimationId = ++animationId;
 
-        if(step.type === 'compare' || step.type === 'swap'){
-            setCountSteps(++countSteps);
-        }
+    let stepCount = countSteps;
+    let swapCount = countSwaps;
 
-        if (type === 'message') {
-            if (setMessage && message) {
-                setMessage(message);
-                setActive(indices)
+    try{
+        for(let i = 0; i < steps.length; i++){
+            if(currentAnimationId !== animationId || !isAnimating) break
+
+            const step = steps[i];
+            const {type, indices, message} = step;
+
+            if(step.type === 'compare' || step.type === "swap"){
+                stepCount++;
+                setCountSteps(stepCount)
             }
-        } else {
-            setActive(indices);
-            setAction(type);
-            if (step.type === 'swap') {
-                const [i, j] = step.indices;
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-                setArray([...arr]);
 
-                setCountSwaps(++countSwaps);
+            if(type === "message"){
+                if(setMessage && message){
+                    setMessage(message);
+                    setActive(indices);
+                }
+            } else {
+                setActive(indices);
+                setAction(type);
+                if (step.type === 'swap') {
+                    const [i, j] = step.indices;
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                    setArray([...arr]);
+                    swapCount++;
+                    setCountSwaps(swapCount);
+                }
             }
+
+            await new Promise((resolve) => setTimeout(resolve, delayMs));
+
+            if(currentAnimationId !== animationId || !isAnimating) break;
+
+            setActive([]);
+            if(type !== "message") setAction(null);
         }
 
-        await new Promise((res) => setTimeout(res, delayMs))
+    } finally {
 
-        setActive([]);
-        if (type !== 'message') {
-            setAction(null)
+        if (currentAnimationId === animationId) {
+            isAnimating = false;
+            setActive([]);
+            setAction(null);
+            if (onFinish) onFinish();
         }
+
     }
+}
+
+export function stopAnimation(){
+    isAnimating = false;
+    animationId++;
+}
+
+export function inCurrentlyAnimating(){
+    return isAnimating;
 }
