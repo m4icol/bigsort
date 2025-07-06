@@ -16,7 +16,7 @@ Big Sort es una aplicación web interactiva que permite visualizar cómo funcion
 
 ## 🤝 Contribuciones
 
-¡Las contribuciones son bienvenidas! Si quieres aportar mejoras, agregar nuevos algoritmos o estructuras de datos, no dudes en abrir un issue o enviar un pull request.
+¡Las contribuciones son bienvenidas! Si quieres agregar mas algoritmos o alguna otra funcionalidad, no dudes en abrir un issue o enviar un pull request!
 
 ---
 
