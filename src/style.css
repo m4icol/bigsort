@@ -13,6 +13,15 @@ html, body {
     --color-BM-subtext: #bbbbbb;
     --text-color-BM-text: #ffffff;
     --text-color-BM-subtext: #bbbbbb;
+
+    --color-WM-background: #f9f9f9; 
+    --color-WM-sidebar: #ffffff; 
+    --color-WM-active: #e0e0e0;    
+    --color-WM-border: #d0d0d0;   
+    --color-WM-subtext: #777777;     
+    --text-color-WM-text: #1a1a1a;      
+    --text-color-WM-subtext: #555555;   
+
     --font-display: "Poppins";
 }
 

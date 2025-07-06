@@ -31,7 +31,7 @@ export default function Dropdown<T extends React.ReactNode>({
         <div className="relative ">
             <button 
                 onClick={toggleDropdown}
-                className="w-full cursor-pointer text-BM-subtext font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center justify-between border-1" 
+                className="w-full cursor-pointer text-WM-subtext dark:text-BM-subtext font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center justify-between border-1 border-WM-border dark:border-BM-border" 
                 type="button">{selectedValue}
             
                 <svg
@@ -52,7 +52,7 @@ export default function Dropdown<T extends React.ReactNode>({
             </button>
 
             {isOpen && (
-                <div className={`w-full absolute z-10 rounded-lg shadow-sm cursor-pointer bg-BM-sidebar text-BM-subtext border-1 ${dropdownPositionClass || 'mt-2'}`}>
+                <div className={`w-full absolute z-10 rounded-lg shadow-sm cursor-pointer bg-WM-sidebar text-WM-subtext dark:bg-BM-sidebar dark:text-BM-subtext border-1 border-WM-border dark:border-BM-border ${dropdownPositionClass || 'mt-2'}`}>
                     <ul className="py-2 text-sm">
                         {values.map((option, index) => {
                             const value = values[index];
@@ -60,7 +60,7 @@ export default function Dropdown<T extends React.ReactNode>({
                                 <li key={String(value)}>
                                     <button
                                     onClick={() => handleSelected(value)}
-                                    className="w-full text-start block px-4 py-2 hover:bg-BM-background hover:text-BM-text"
+                                    className="w-full text-start block px-4 py-2 hover:bg-WM-background hover:text-WM-text dark:hover:bg-BM-background dark:hover:text-BM-text"
                                     >
                                     {option}
                                     </button>

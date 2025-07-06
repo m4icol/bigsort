@@ -130,7 +130,7 @@ function BigSort({ randomNumberItems, codeLanguage, codeAlgorithm, algSpeed, set
       
       <div className="flex gap-10 lg:gap-2 flex-col justify-center items-center w-full lg:w-[24rem]">
         <h1 className="text-2xl lg:text-3xl font-bold">BIG S(O)RT</h1>
-        <p className="text-xs text-BM-subtext text-center px-8 lg:px-0">
+        <p className="text-xs text-WM-subtext dark:text-BM-subtext text-center px-8 lg:px-0">
           Interactive tool to explore how sorting algorithms work, with live visuals, controls, speed and code in multiple languages.
         </p>
       </div>

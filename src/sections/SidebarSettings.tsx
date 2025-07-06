@@ -82,7 +82,7 @@ function SidebarSettings({
                 </SidebarSection>
 
                 <div className="flex flex-col gap-2">
-                    <p className="font-semibold text-sm">NUMBERS <span className="text-xs text-BM-subtext">{rangeValue}</span></p>
+                    <p className="font-semibold text-sm">NUMBERS <span className="text-xs text-WM-subtext dark:text-BM-subtext">{rangeValue}</span></p>
                     <div className="flex items-center gap-2">
                         <ButtonRandom onClick={randomNumberItems} />
                         <Range value={rangeValue} onChange={setRangeValue} />

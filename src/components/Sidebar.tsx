@@ -25,7 +25,7 @@ export default function Sidebar({
     <aside
       className={`
         fixed ${position} ${rounded} top-0 bottom-0 lg:top-5 lg:bottom-5 z-10
-        flex flex-col px-7 lg:px-6.5 py-5.5 bg-BM-sidebar transition-all duration-300
+        flex flex-col px-7 lg:px-6.5 py-5.5 bg-WM-sidebar dark:bg-BM-sidebar transition-all duration-300
         ${isOpen 
           ? `${sizeSidebar} overflow-y-scroll scroll-bar-custom` 
           : "w-19 lg:h-auto h-19 justify-start items-start"
@@ -42,7 +42,7 @@ export default function Sidebar({
         <Icon className="flex-shrink-0" />
         <h2
           className={`
-            text-BM-text font-bold text-xl transition-all duration-300 overflow-hidden
+            text-WM-text dark:text-BM-text font-bold text-xl transition-all duration-300 overflow-hidden
             ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0"}
           `}
         >
