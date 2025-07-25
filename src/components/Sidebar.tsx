@@ -24,7 +24,7 @@ export default function Sidebar({
   return (
     <aside
       className={`
-        fixed ${position} ${rounded} top-0 bottom-0 lg:top-5 lg:bottom-5 z-10
+        fixed ${position} ${rounded} top-0 bottom-0 lg:top-5 lg:bottom-5 z-10 border-1 border-BM-border/20
         flex flex-col px-7 lg:px-6.5 py-5.5 bg-WM-sidebar dark:bg-BM-sidebar transition-all duration-300
         ${isOpen 
           ? `${sizeSidebar} overflow-y-scroll scroll-bar-custom` 
